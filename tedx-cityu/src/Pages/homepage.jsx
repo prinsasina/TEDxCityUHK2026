@@ -30,8 +30,8 @@ export default function HomePage() {
     // const isTablet = windowWidth >= mobileBreakpoint && windowWidth < tabletBreakpoint;
     return (
         <Container className="min-h-screen w-full">
-            <Banner show={false}/>
-            <Counter />
+            {/* <Banner show={false}/>
+            <Counter /> */}
             <AboutTedx show={false}/>
             <SpeakerCard />
             <PerformerCard />

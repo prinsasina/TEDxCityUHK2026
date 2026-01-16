@@ -167,18 +167,18 @@ export default function Navbar() {
                 {selection.label}
               </Selection>
             ))}
-            <Selection
+            {/* <Selection
               className="text-black mx-11 text-base md:text-xl hover:text-yellow-400"
               as="a"
             >
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://forms.gle/C8ZV2JNfhEAnJ1GG9"
+                href=""
               >
                 Registration
               </a>
-            </Selection>
+            </Selection> */}
           </NavSelectionWrapper>
         </NavbarWrapper>
       )}
@@ -195,18 +195,18 @@ export default function Navbar() {
               {selection.label}
             </Selection>
           ))}
-          <Selection
+          {/* <Selection
             className="my-2 md:text-2xl text-xl text-black text-center"
             as="a"
           >
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://forms.gle/C8ZV2JNfhEAnJ1GG9"
+              href=""
             >
               Registration
             </a>
-          </Selection>
+          </Selection> */}
         </MobileMenu>
       )}
     </Container>
