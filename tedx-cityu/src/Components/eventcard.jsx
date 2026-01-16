@@ -7,7 +7,6 @@ const Image = styled.img``;
 const BoldText = styled.div``;
 const List = styled.ul``;
 const Text = styled.p``;
-const Break = styled.br``;
 
 function EventCard({ img, title, desc, MappedSpeakers }) {
   return (

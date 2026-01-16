@@ -1,42 +1,11 @@
 [
     {
-        "img": "Finance and Sponsorship/Jimmy.jpeg",
-        "fname": "Fan Ka Ho",
-        "lname": "Jimmy",
-        "major": "Year 2, GBSM",
-        "origin": "Hong Kong",
-        "position": "Finance and Sponsorships Director"
-    },
-    {
-        "img": "Finance and Sponsorship/Ferdinand.jpeg",
-        "fname": "Ferdinand Kurnia",
-        "lname": "Setiawan",
-        "major": "Year 1, Economics & Finance",
-        "origin": "Indonesia",
-        "position": "Finance and Sponsorships Manager"
-    },
-    {
-        "img": "Finance and Sponsorship/Arnika.jpeg",
-        "fname": "Arnika Das",
-        "lname": "Shreya",
-        "major": "Year 4, Finance",
-        "origin": "Bangladesh",
-        "position": "Finance and Sponsorships Manager"
-    },
-    {
-        "img": "Finance and Sponsorship/Sean.jpg",
-        "fname": "Sean Theodore",
-        "lname": "Surya",
-        "major": "Year 1, Economics & Finance",
-        "origin": "Indonesia",
-        "position": "Finance and Sponsorships Manager"
-    },
-    {
-        "img": "Finance and Sponsorship/Febryan.png",
-        "fname": "Febryan",
-        "lname": "Hartanto",
-        "major": "Year 2, Finance",
-        "origin": "Indonesia",
-        "position": "Finance and Sponsorships Manager"
+        "_example": "Remove this example object and add your team members below",
+        "img": "Finance and Sponsorship/filename.jpg",
+        "fname": "First Name",
+        "lname": "Last Name",
+        "major": "Year X, Major Name",
+        "origin": "Country/Region",
+        "position": "Position Title"
     }
 ]

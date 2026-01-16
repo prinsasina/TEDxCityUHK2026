@@ -1,50 +1,11 @@
 [
     {
-        "img": "Marketing and Communication/Rose.jpeg",
-        "fname": "Rose Anastasia",
-        "lname": "Flaminiano",
-        "major": "Year 3, English",
-        "origin": "Phillipines",
-        "position": "Marketing and Communication Director"
-    },
-    {
-        "img": "Marketing and Communication/Moon.jpg",
-        "fname": "Moon",
-        "lname": "Barua",
-        "major": "Year 4, English",
-        "origin": "Hong Kong",
-        "position": "Marketing and Communication Manager"
-    },
-    {
-        "img": "Marketing and Communication/Michael.jpg",
-        "fname": "Michael Terence",
-        "lname": "Basarah",
-        "major": "Year 1, Engineering",
-        "origin": "Indonesia",
-        "position": "Marketing and Communication Manager"
-    },
-    {
-        "img": "Marketing and Communication/Arnav.png",
-        "fname": "Arnav",
-        "lname": "Bhavnani",
-        "major": "Year 2, Finance",
-        "origin": "United Kingdom",
-        "position": "Marketing and Communication Manager"
-    },
-    {
-        "img": "Marketing and Communication/Ansleigh.jpeg",
-        "fname": "Ansleigh Mendoza",
-        "lname": "Go",
-        "major": "Year 2, Global Operations Management",
-        "origin": "Phillipines",
-        "position": "Marketing and Communication Manager"
-    },
-    {
-        "img": "Marketing and Communication/Aurell.jpeg",
-        "fname": "Aurell",
-        "lname": "Wijaya",
-        "major": "Year 2, Biological Science",
-        "origin": "Indonesia",
-        "position": "Marketing and Communication Manager"
+        "_example": "Remove this example object and add your team members below",
+        "img": "Marketing and Communication/filename.jpg",
+        "fname": "First Name",
+        "lname": "Last Name",
+        "major": "Year X, Major Name",
+        "origin": "Country/Region",
+        "position": "Position Title"
     }
 ]

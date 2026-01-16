@@ -1,18 +1,11 @@
 [
     {
-        "img": "Curators/Haerin.jpeg",
-        "fname": "Haerin",
-        "lname": "Lee",
-        "major": "Year 2, Media & Communication",
-        "origin": "South Korea",
-        "position": "Lead Organizer/Resources Curator"
-    },
-    {
-        "img": "Curators/Prabin.jpeg",
-        "fname": "Prabin",
-        "lname": "Thapa",
-        "major": "Year 3, Psychology",
-        "origin": "Nepal",
-        "position": "Lead Organizer/Resources Curator"
+        "_example": "Remove this example object and add your team members below",
+        "img": "Curators/filename.jpg",
+        "fname": "First Name",
+        "lname": "Last Name",
+        "major": "Year X, Major Name",
+        "origin": "Country/Region",
+        "position": "Position Title"
     }
 ]

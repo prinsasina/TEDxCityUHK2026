@@ -1,6 +1,5 @@
 import {Banner} from "../Components/banner";
 import EventCard from "../Components/eventcard";
-import Footer from "../Components/footer";
 
 import PE2024 from "../Assets/PastEvents/2024.png"
 import PE2023 from "../Assets/PastEvents/2023.png"

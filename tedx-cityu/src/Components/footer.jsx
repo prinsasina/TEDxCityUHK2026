@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { styled } from "styled-components";
-import { AiOutlineInstagram, AiOutlineMail, AiFillLinkedin, AiFillYoutube, AiOutlineFacebook} from "react-icons/ai";
+import { AiOutlineInstagram, AiFillLinkedin, AiFillYoutube, AiOutlineFacebook} from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 
 const Container = styled.div``;
@@ -43,7 +42,7 @@ export default function Footer() {
                 </SocialMediaWrapper> }
                 <CopyrightWrapper className="text-center pt-1">
                     <Copyright className="text-gray font-textfont text-md md:text-xl">
-                        Copyright© 2025 <span className="text-grey">TEDxCityUHongKong</span>
+                        Copyright© 2026 <span className="text-grey">TEDxCityUHongKong</span>
                     </Copyright>
                 </CopyrightWrapper>
             </FooterContainer>

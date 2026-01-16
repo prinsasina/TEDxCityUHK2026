@@ -1,82 +1,11 @@
 [
     {
-        "img": "Event Management/Aiser.jpeg",
-        "fname": "Aiser",
-        "lname": "Rahmatullah",
-        "major": "Year 3, Business Economics",
-        "origin": "Bangladesh",
-        "position": "Event Management Director"
-    },
-    {
-        "img": "Event Management/Shreesti.jpeg",
-        "fname": "Shreesti",
-        "lname": "Limbu",
-        "major": "Year 4, English",
-        "origin": "Nepal",
-        "position": "Procurement Director"
-    },
-    {
-        "img": "Event Management/Akirti.jpeg",
-        "fname": "Akirti",
-        "lname": "Ghimire",
-        "major": "Year 1, Management",
-        "origin": "Nepal",
-        "position": "Event Management and Procurement Manager"
-    },
-    {
-        "img": "Event Management/Gitika.jpeg",
-        "fname": "Gitika Lalwani",
-        "lname": "Jenny",
-        "major": "Year 4, English",
-        "origin": "India",
-        "position": "Event Management and Procurement Manager"
-    },   
-    {
-        "img": "Event Management/Rian.jpg",
-        "fname": "Rian",
-        "lname": "Park",
-        "major": "Year 2, Media & Communication",
-        "origin": "South Korea",
-        "position": "Event Management and Procurement Manager"
-    },
-    {
-        "img": "Event Management/Phraewa.png",
-        "fname": "Phraewa",
-        "lname": "Phuriyaphan",
-        "major": "Year 3, Information Management",
-        "origin": "Thailand",
-        "position": "Event Management and Procurement Manager"
-    },
-    {
-        "img": "Event Management/Joanne.jpeg",
-        "fname": "Joanne Trinity",
-        "lname": "Setiawan",
-        "major": "Year 1, Chemistry",
-        "origin": "Indonesia",
-        "position": "Event Management and Procurement Manager"
-    },
-    {
-        "img": "Event Management/Gracia.jpeg",
-        "fname": "Gracia Catalina",
-        "lname": "Susilo",
-        "major": "Year 1, Mechanical Engineering",
-        "origin": "Indonesia",
-        "position": "Event Management and Procurement Manager"
-    },
-    {
-        "img": "Event Management/Arista.jpeg",
-        "fname": "Arista",
-        "lname": "Wangsadjaja",
-        "major": "Year 1, Computer Science",
-        "origin": "Indonesia",
-        "position": "Event Management and Procurement Manager"
-    },
-    {
-        "img": "Event Management/Kapria.jpg",
-        "fname": "Lau Pui Shan",
-        "lname": "Kapria",
-        "major": "Year 3, Psychology",
-        "origin": "Hong Kong",
-        "position": "Event Management and Procurement Manager"
+        "_example": "Remove this example object and add your team members below",
+        "img": "Event Management/filename.jpg",
+        "fname": "First Name",
+        "lname": "Last Name",
+        "major": "Year X, Major Name",
+        "origin": "Country/Region",
+        "position": "Position Title"
     }
 ]

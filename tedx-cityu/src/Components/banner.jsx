@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import DarkWave from '../Assets/wave_dark_red.svg';
-import LightWave from '../Assets/wave_tedx_red.svg';
 import Background1 from '../Assets/background1.png';
 import Background2 from '../Assets/background2.png';
 import Background3 from '../Assets/background3.JPG';

@@ -1,17 +1,8 @@
 [
-  {
-    "img": "pixel.JPG",
-    "fname" : "PIXEL",
-    "path" : "PIXEL"
-  },
-  {
-    "img": "jj&keith.jpg",
-    "fname" : "JJ & Keith",
-    "path" : "JJ&Keith"
-  },
-  {
-    "img": "acapella.jpeg",
-    "fname" : "A capella",
-    "path" : "Acapella"
-  }
+    {
+        "_example": "Remove this example object and add your performers below",
+        "img": "filename.jpg",
+        "fname": "Performer Name",
+        "path": "PerformerPath"
+    }
 ]

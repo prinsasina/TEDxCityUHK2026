@@ -1,34 +1,11 @@
 [
     {
-        "img": "Technical/Xavier.jpg",
-        "fname": "Xavier Felixan",
-        "lname": "Mijaata",
-        "major": "Year 3, Data Science",
-        "origin": "Indonesia",
-        "position": "Technical External Director"
-    },
-    {
-        "img": "Technical/Hudson.png",
-        "fname": "Hudson Lois",
-        "lname": "Marcus",
-        "major": "Year 1, Computer Science",
-        "origin": "Indonesia",
-        "position": "Technical Internal Director"
-    },
-    {
-        "img": "Technical/Sean.jpeg",
-        "fname": "Sean Darren",
-        "lname": "Timothy",
-        "major": "Year 1, Computer Science",
-        "origin": "Indonesia",
-        "position": "Technical Manager"
-    },
-    {
-        "img": "Technical/Sasina.jpeg",
-        "fname": "Sasina",
-        "lname": "Parinkarn",
-        "major": "Year 1, Computer Science",
-        "origin": "Thailand",
-        "position": "Technical Manager"
+        "_example": "Remove this example object and add your team members below",
+        "img": "Technical/filename.jpg",
+        "fname": "First Name",
+        "lname": "Last Name",
+        "major": "Year X, Major Name",
+        "origin": "Country/Region",
+        "position": "Position Title"
     }
 ]

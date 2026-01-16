@@ -1,38 +1,9 @@
 [
-  {
-    "img": "VincentLee.jpg",
-    "fname" : "Dr. Vincent Lee",
-    "path" : "VincentLee",
-    "desc" : "Dr. Vincent Lee is a very charitable eye doctor who has worked alongside Orbis in helping needy communities (lack of eye care facilities, equipments and doctors) by equipping local doctors with new surgical techniques. This not only provides for those in need of eye surgery but also empowers doctors to pass on surgical skills to fellow doctors in regions that lack access and to keep the practice sustainable🩺."
-  },
-  {
-    "img": "BerniceAntoine.jpg",
-    "fname" : "Bernice Antoine",
-    "path" : "BerniceAntoine",
-    "desc" : "Bernice Antoine is a sustainability advocate, youth leader, and social entrepreneur from Trinidad and Tobago. A Business Analytics major at the University of Notre Dame, she integrates AI and climate solutions to tackle food waste and sustainability through her venture, Planet Plate 🌐."
-  },
-  {
-    "img": "AlmenWong.jpg",
-    "fname" : "Almen Wong",
-    "path" : "AlmenWong",
-    "desc" : "Almen Wong is a co-founder and renowned yoga teacher at PURE Group, having transitioned from a former supermodel and movie star in Hong Kong. With over 23 years of experience as a leading yoga teacher, she continues to share her passion for mindfulness and balance, establishing herself as a true beacon of wellness and empowerment 🧘‍♀️."
-  },
-  {
-    "img": "MeganJaques.png",
-    "fname" : "Megan Jaques",
-    "path" : "MeganJaques",
-    "desc" : "Megan Jaques is a Hong Kong native with a touch of French charm. Passionate about advocating for self-identity and spreading positivity, she's a social media enthusiast who loves sharing her journey through food, languages, cultures, and travel 📸."
-  },
-  {
-    "img": "StephanieLowe.jpg",
-    "fname" : "Stephanie Lown & Lola",
-    "path" : "StephanieLowe",
-    "desc" : "Born and raised in Hong Kong to a British father and Chinese mother. She is an avid supporter of adopting rescue dogs and the founder of Exploring Dogs, a non-profit hiking group for dog owners to raise money for shelters. She studied Animal Science at Newcastle University and currently work as a content specialist at the SPCA, where I head up their biannual Pawprint magazine - a free resource promoting responsible pet ownership🐕."
-  },
-  {
-    "img": "ChristianSuen.jpeg",
-    "fname" : "Christian Suen",
-    "path" : "ChristianSuen",
-    "desc" : "A Cambridge University graduate and a prominent travel and lifestyle influencer. Growing up in Hong Kong, he has achieved notable academic and public speaking accolades. He has cultivated a significant online presence from TikTok, where he shares content as part of an LGBT couple and showcases his skills as a dancer 📊."
-  }
+    {
+        "_example": "Remove this example object and add your speakers below",
+        "img": "filename.jpg",
+        "fname": "Speaker Name",
+        "path": "SpeakerPath",
+        "desc": "Speaker description and bio here."
+    }
 ]

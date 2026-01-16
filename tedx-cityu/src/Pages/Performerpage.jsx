@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import { Banner } from "../Components/banner";
-
 import Performerdata from "../Data/PerformerData.json"
-
-import Navbar from "../Components/navbar";
-import Footer from "../Components/footer";
 import Performer from "../Components/Performer";
 
 const Container = styled.div``;
-const Description = styled.div``;
-
 
 export default function Performerpage(){
   let Query = useParams().path;

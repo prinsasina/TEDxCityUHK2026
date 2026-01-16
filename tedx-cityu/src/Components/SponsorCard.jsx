@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import Sponsordata from "../Data/SponsorData.json";
-import Footer from "./footer";
 
 const Container = styled.div`
   background-color: black;
@@ -53,11 +52,11 @@ export default function SponsorCard() {
     return (
       <section id="sponsor-section"> {}
         <Container>
-          <div className="mt-5 font-bold text-red text-center font-textfont text-4xl py-4 md:text-7xl md:py-7">
+          {/* <div className="mt-5 font-bold text-red text-center font-textfont text-4xl py-4 md:text-7xl md:py-7">
             Sponsors
-          </div>
+          </div> */}
           <CardWrapper>
-            {Sponsordata.map((item, index) => (
+            {Sponsordata.filter(item => !item._example).map((item, index) => (
               <Link key={index} to={item.path} target="_blank" rel="noopener noreferrer">
                 <Card>
                   <Image 

@@ -1,12 +1,8 @@
 [
     {
-      "img": "locobike.png",
-      "name" : "Locobike",
-      "path" : "https://loco.hk/bike?redirect=/"
-    },
-    {
-      "img": "wingman.png",
-      "name" : "Wingman",
-      "path" : "https://wingman.hk/"
+        "_example": "Remove this example object and add your sponsors below",
+        "img": "sponsor-logo.png",
+        "name": "Sponsor Name",
+        "path": "https://sponsor-website.com"
     }
-  ]
+]

@@ -1,6 +1,5 @@
 import React, {useRef, useState, useEffect} from "react";
 import {styled} from "styled-components";
-import Timer from "./timer";
 import Butterfly from "../Assets/MetamorphosisLogo2.png";
 
 const Container = styled.div``;

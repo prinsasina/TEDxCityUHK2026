@@ -229,7 +229,7 @@ export default function TeamPage() {
     }, []);
 
     const RenderDepartment = (Dept) => {
-        let data = list_of_department[Dept] || [];
+        let data = (list_of_department[Dept] || []).filter(item => !item._example);
         if (isMobile) {
             return (
                 <>

@@ -1,50 +1,11 @@
 [
     {
-        "img": "Human Resources/Riley.jpeg",
-        "fname": "Ngai Tak Wai",
-        "lname": "Riley",
-        "major": "Year 4, Management",
-        "origin": "Hong Kong",
-        "position": "Human Resources Director"
-    },
-    {
-        "img": "Human Resources/Alicia.jpeg",
-        "fname": "Leung Pak Yan",
-        "lname": "Alicia",
-        "major": "Year 3, Psychology",
-        "origin": "Hong Kong",
-        "position": "Human Resources Manager"
-    },
-    {
-        "img": "Human Resources/Maria.jpeg",
-        "fname": "Maria Nadine",
-        "lname": "Nathania",
-        "major": "Year 1, Global Business",
-        "origin": "Indonesia",
-        "position": "Human Resources Manager"
-    },
-    {
-        "img": "Human Resources/Kenneth.jpeg",
-        "fname": "Kenneth Russell",
-        "lname": "Setiawan",
-        "major": "Year 3, Civil Engineering",
-        "origin": "Indonesia",
-        "position": "Human Resources Manager"
-    },
-    {
-        "img": "Human Resources/Maurisia.jpeg",
-        "fname": "Maurisia",
-        "lname": "Widjaja",
-        "major": "Year 2, Marketing",
-        "origin": "Indonesia",
-        "position": "Human Resources Manager"
-    },
-    {
-        "img": "Human Resources/Judy.JPG",
-        "fname": "Yeh Chih Yu",
-        "lname": "Judy",
-        "major": "Year 2, Marketing",
-        "origin": "Taiwan",
-        "position": "Human Resources Manager"
+        "_example": "Remove this example object and add your team members below",
+        "img": "Human Resources/filename.jpg",
+        "fname": "First Name",
+        "lname": "Last Name",
+        "major": "Year X, Major Name",
+        "origin": "Country/Region",
+        "position": "Position Title"
     }
 ]

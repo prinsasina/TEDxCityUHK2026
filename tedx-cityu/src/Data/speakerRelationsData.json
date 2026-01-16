@@ -1,50 +1,11 @@
 [
     {
-        "img": "Speaker Relations/Jeslyne.JPG",
-        "fname": "Jeslyne Kaori",
-        "lname": "Purnomo",
-        "major": "Year 1, GBSM",
-        "origin": "Indonesia",
-        "position": "Speaker Relations Director"
-    },
-    {
-        "img": "Speaker Relations/Alice.JPG",
-        "fname": "Yum Hau Man",
-        "lname": "Alice",
-        "major": "Year 2, Data & System Engineering",
-        "origin": "Hong Kong",
-        "position": "Speaker Relations Manager"
-    },
-    {
-        "img": "Speaker Relations/Dumezweni.jpeg",
-        "fname": "Dumezweni",
-        "lname": "Fuyane",
-        "major": "Year 2, Creative Media",
-        "origin": "South Africa",
-        "position": "Speaker Relations Manager"
-    },
-    {
-        "img": "Speaker Relations/Therese.jpeg",
-        "fname": "Therese Mendoza",
-        "lname": "Go",
-        "major": "Year 2, Architecture",
-        "origin": "Phillipines",
-        "position": "Speaker Relations Manager"
-    },
-    {
-        "img": "Speaker Relations/Elycia.jpeg",
-        "fname": "Elycia Trishelle",
-        "lname": "Tandiawan",
-        "major": "Year 1, Global Business",
-        "origin": "Indonesia",
-        "position": "Speaker Relations Manager"
-    },
-    {
-        "img": "Speaker Relations/Entong.jpeg",
-        "fname": "Entong",
-        "lname": "Xu",
-        "major": "Year 3, Linguistics and Language Application",
-        "origin": "China",
-        "position": "Speaker Relations Manager"
+        "_example": "Remove this example object and add your team members below",
+        "img": "Speaker Relations/filename.jpg",
+        "fname": "First Name",
+        "lname": "Last Name",
+        "major": "Year X, Major Name",
+        "origin": "Country/Region",
+        "position": "Position Title"
     }
 ]

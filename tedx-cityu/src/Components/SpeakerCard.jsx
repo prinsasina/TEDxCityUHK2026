@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
-
-
 import Speakerdata from "../Data/SpeakerData.json"
 
 const Container = styled.div`
@@ -14,19 +12,15 @@ const CardWrapper = styled.div`
 `;
 const Card = styled.div``;
 const Image = styled.img``;
-const Data = styled.div``;
-
-
-
 
 export default function SpeakerCard() {
     return (
         <Container>
-            <div className="mt-5 font-bold text-white text-center font-textfont text-3xl py-3 md:text-7xl md:py-7">
+            {/* <div className="mt-5 font-bold text-white text-center font-textfont text-3xl py-3 md:text-7xl md:py-7">
                 Speakers
-            </div>
+            </div> */}
             <CardWrapper>
-            {Speakerdata.map((item, index) => (
+            {Speakerdata.filter(item => !item._example).map((item, index) => (
                 <Link className="my-2 mx-3" key={index} to={`/speaker/${item.path}`}>
                     <Card className="flex justify-center items-center overflow-hidden inline-block">
                         <Image src= {require("../Assets/Members/Speaker/" + item.img) } alt={item.fname} className="w-26 h-26 md:w-48 md:h-48 rounded-md hover:scale-110 transition-transform duration-500 cursor-pointer mx-auto"/>

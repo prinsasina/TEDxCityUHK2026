@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-import PastEvent from "../Assets/PastEvent.png";
-import PastSpeaker from "../Assets/Pastspeaker.png";
 import TEDTeam from "../Assets/TEDxTeam.png";
 import TEDPhotoX from "../Assets/Homepage-Photo.png";
 import XFrame from "../Assets/X-FrameHome.png";
@@ -13,7 +11,6 @@ import '@fontsource/commissioner'
 
 const Container = styled.div``;
 const ContentWrapper = styled.div``;
-const Partition = styled.div``;
 const TedxdescWrapper = styled.div``;
 const Tedxdesc = styled.div``;
 
@@ -26,16 +23,6 @@ const Left1 = styled.div`
     @media (max-width: 768px){
         width:100%;
         margin: 0 0 1rem 0;
-    }
-`;
-const Left2 = styled.div`
-    float:left;
-    width:30%;
-    // margin: 0 1.3rem 0 0;
-
-    @media (max-width: 768px){
-        width:100%;
-        margin: 0 0 0.5rem 0;
     }
 `;
 
@@ -68,8 +55,6 @@ const ArtPic = styled.img`
   width: 95%;
   height: auto;
 `;
-
-
 
 const RectShape = styled.div`
     position: relative;
@@ -282,17 +267,6 @@ const TitleResp = styled.div`
     font-size: 40px;
     color: white;
     letter-spacing: 0.1em;
-    }
-`;
-
-const Selection = styled.a`
-    padding: 5px;
-    text-align: center;
-    transition: all 0.3s ease;
-    &:hover {
-        // color: #FCBA2E;
-        cursor: pointer;
-        background-color: #FF0000;
     }
 `;
 

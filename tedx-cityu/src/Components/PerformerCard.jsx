@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React from "react";
 import { styled } from "styled-components";
-
-
 import Performerdata from "../Data/PerformerData.json"
 
 const Container = styled.div`
@@ -14,20 +11,16 @@ const CardWrapper = styled.div`
 `;
 const Card = styled.div``;
 const Image = styled.img``;
-const Data = styled.div``;
 const Performer = styled.div``;
-
-
-
 
 export default function PerformerCard() {
     return (
         <Container>
-            <div className="font-bold text-center text-3xl py-3 font-textfont md:text-7xl md:py-7">   
+            {/* <div className="font-bold text-center text-3xl py-3 font-textfont md:text-7xl md:py-7">   
                 Performers
-            </div>
+            </div> */}
             <CardWrapper>
-            {Performerdata.map((item, index) => (
+            {Performerdata.filter(item => !item._example).map((item, index) => (
                 <Performer className="relative mb-4 md:mb-5 mx-3 pb-5" key={index} 
                 // to={`/Performer/${item.path}`}
                 >

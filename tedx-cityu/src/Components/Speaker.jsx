@@ -4,17 +4,8 @@ import { styled } from "styled-components";
 const Container = styled.div``;
 const Wrapper = styled.div``;
 const DescriptionWrapper = styled.div``;
-
 const TitleText = styled.div``;
-
 const Picture = styled.img``;
-const SpeakerLink = styled.a`
-    &:hover {
-        color: #0000EE;
-        cursor: pointer;
-    }
-`;
-
 
 const Speaker = ({data}) =>{
     useEffect(() => {

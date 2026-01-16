@@ -1,42 +1,11 @@
 [
     {
-        "img": "Creative/Rachel.jpg",
-        "fname": "Law Tian En",
-        "lname": "Rachel",
-        "major": "Year 2, Creative Media",
-        "origin": "Hong Kong",
-        "position": "Creative Director"
-    },
-    {
-        "img": "Creative/Alanis.jpeg",
-        "fname": "Cheng Hei Yu",
-        "lname": "Alanis",
-        "major": "Year 2, Creative Media",
-        "origin": "Hong Kong",
-        "position": "Creative Manager"
-    },
-    {
-        "img": "Creative/Ruby.jpeg",
-        "fname": "Lee Lok Yin",
-        "lname": "Ruby",
-        "major": "Year 4, Asian & International Studies",
-        "origin": "Hong Kong",
-        "position": "Creative Manager"
-    },
-    {
-        "img": "Creative/Kelly.jpg",
-        "fname": "Oh Seoyun",
-        "lname": "Kelly",
-        "major": "Year 3, Digital Television & Broadcasting",
-        "origin": "South Korea",
-        "position": "Creative Manager"
-    },
-    {
-        "img": "Creative/Kathy.jpg",
-        "fname": "Shum Wing Kei",
-        "lname": "Kathy",
-        "major": "Year 2, Creative Media",
-        "origin": "Hong Kong",
-        "position": "Creative Manager"
+        "_example": "Remove this example object and add your team members below",
+        "img": "Creative/filename.jpg",
+        "fname": "First Name",
+        "lname": "Last Name",
+        "major": "Year X, Major Name",
+        "origin": "Country/Region",
+        "position": "Position Title"
     }
 ]
