@@ -230,6 +230,7 @@ export default function TeamPage() {
 
     const RenderDepartment = (Dept) => {
         let data = (list_of_department[Dept] || []).filter(item => !item._example);
+        if (data.length === 0) return null;
         if (isMobile) {
             return (
                 <>
