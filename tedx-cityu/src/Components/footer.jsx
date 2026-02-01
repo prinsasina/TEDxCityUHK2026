@@ -1,51 +1,106 @@
 import React from "react";
+import { Instagram, Linkedin, Youtube, Facebook } from "lucide-react";
 import { styled } from "styled-components";
-import { AiOutlineInstagram, AiFillLinkedin, AiFillYoutube, AiOutlineFacebook} from "react-icons/ai";
-import { useLocation } from "react-router-dom";
 
-const Container = styled.div``;
-const FooterContainer = styled.div`
-    background: black;
-`;
-const CopyrightWrapper = styled.div``;
-const Copyright = styled.p``;
-const SocialMediaWrapper = styled.div`
-    // padding-bottom: 1%;
-`;
-const SocialMediaLogoWrapper = styled.a`
-    &:hover {
-        cursor: pointer;
-    }
+const FooterContainer = styled.footer`
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem 1rem 4rem 1rem;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem 3rem 1rem;
+  }
 `;
 
-const FollowUs = styled.div`
-    color: ${props => props.$isHomepage ? 'white' : 'black'};
-    background: ${props => props.$isHomepage ? 'black' : 'white'};
+const Title = styled.h3`
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const SocialLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+  
+  @media (max-width: 768px) {
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const SocialLink = styled.a`
+  color: #fff;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    color: #e62b1e;
+  }
+`;
+
+const Copyright = styled.p`
+  font-size: 1.125rem;
+  color: rgb(147, 141, 140);
+  margin: 0;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export default function Footer() {
-    const location = useLocation();
-    const isHomepage = location.pathname === '/';
-    const sizing = "w-11 h-11";
-    const Social_media_logo = [<AiOutlineInstagram className={sizing}/>,  <AiFillLinkedin className={sizing}/>,  <AiOutlineFacebook className={sizing}/>, <AiFillYoutube className={sizing}/>];
-    const Link = ["https://www.instagram.com/tedxcityuhongkong/", "https://www.linkedin.com/company/tedxcityuhongkong/", "https://www.facebook.com/TEDxCityUHK/","https://youtube.com/@tedxcityuhongkong?si=zqA9FgialVaH8CGB"];
-    return (
-        <Container>
-            <FollowUs $isHomepage={isHomepage} className="text-center md:text-7xl text-5xl top-1 md:top-2">FOLLOW US!</FollowUs>
-            <FooterContainer className="items-center h-24 w-full bg-black px-5 md:px-12 py-5">
-                { <SocialMediaWrapper className="flex justify-center items-center font-textfont text-white">
-                    {Social_media_logo.map((logo, index) => (
-                        <SocialMediaLogoWrapper key={index} target="_blank" href={Link[index]} className="px-3">
-                            {logo}
-                        </SocialMediaLogoWrapper>
-                    ))}
-                </SocialMediaWrapper> }
-                <CopyrightWrapper className="text-center pt-1">
-                    <Copyright className="text-gray font-textfont text-md md:text-xl">
-                        Copyright© 2026 <span className="text-grey">TEDxCityUHongKong</span>
-                    </Copyright>
-                </CopyrightWrapper>
-            </FooterContainer>
-        </Container>
-    );
+  return (
+    <FooterContainer>
+      <Title>FOLLOW US!</Title>
+
+      <SocialLinks>
+        <SocialLink
+          href="https://www.instagram.com/tedxcityuhongkong/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow us on Instagram"
+        >
+          <Instagram size={40} />
+        </SocialLink>
+        <SocialLink
+          href="https://www.linkedin.com/company/tedxcityuhongkong/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow us on LinkedIn"
+        >
+          <Linkedin size={40} />
+        </SocialLink>
+        <SocialLink
+          href="https://www.facebook.com/TEDxCityUHK/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow us on Facebook"
+        >
+          <Facebook size={40} />
+        </SocialLink>
+        <SocialLink
+          href="https://youtube.com/@tedxcityuhongkong?si=zqA9FgialVaH8CGB"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow us on YouTube"
+        >
+          <Youtube size={40} />
+        </SocialLink>
+      </SocialLinks>
+
+      <Copyright>
+        Copyright© 2026 TEDxCityUHongKong
+      </Copyright>
+    </FooterContainer>
+  );
 }
