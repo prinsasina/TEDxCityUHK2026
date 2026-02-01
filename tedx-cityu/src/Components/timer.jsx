@@ -1,131 +1,118 @@
-import {React} from 'react';
-import {useState, useEffect} from 'react';
-import {styled} from  'styled-components';
+import React, { useState, useEffect } from 'react';
 
+function FlipDigit({ value, label }) {
+  const valueString = String(value || "00");
+  const labelColor = "text-white";
+  
+  return (
+    <div className="flex flex-col items-center">
+      <div className="flex gap-2">
+        {valueString.split("").map((digit, idx) => (
+          <div
+            key={idx}
+            className="relative w-16 h-20 sm:w-20 sm:h-28 md:w-28 md:h-36 bg-red rounded-lg flex items-center justify-center overflow-hidden p-1"
+            style={{
+              boxShadow: "0 4px 0 0 rgba(180, 30, 30, 1), inset 0 -2px 4px rgba(0,0,0,0.3)",
+            }}
+          >
+            <div className="absolute inset-x-0 top-1/2 h-[2px] bg-black/30 z-10" />
+            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-none" style={{ fontFamily: "Bungee, sans-serif" }}>
+              {digit}
+            </span>
+          </div>
+        ))}
+      </div>
+      {label && (
+        <span className={`mt-4 text-base sm:text-lg md:text-xl font-bold tracking-[0.2em] ${labelColor} uppercase`} style={{ fontFamily: "Bungee, sans-serif" }}>
+          {label}
+        </span>
+      )}
+    </div>
+  );
+}
 
-const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 0;
-`;
+export default function Timer({ targetDate }) {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
-const Box = styled.div`
-    display: flex;
-    justify-content: center; 
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-`;
-
-const Timebox = styled.div`
-    display: flex;
-    align-items: flex;
-    justify-content: center;
-    width: 4rem;
-    height: 4rem;
-    @media (max-width: 768px) {
-        width: 3rem;
-        height: 3rem;
-    }
-`;
-
-const TimeNumber = styled.div`
-    display: flex-end;
-    justify-content: bottom;
-    align-items: flex-end;
-    color: white;
-    font-size: 4rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    @media (max-width: 768px) {
-        font-size: 2.5rem;
-    }
-`;
-
-const Timetext = styled.div`
-    display: flex;
-    justify-content: bottom;
-    align-items: flex-end;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-left: 0.7rem; 
-    margin-right: 0.5rem;
-    @media (max-width: 768px) { 
-        font-size: 0.8rem;
-        padding-bottom: 0.4rem;
-        margin-left: 0.2rem; 
-        margin-right: 0;
-    }
-`;
-
-export default function Timer(){
-
-    const [Time, setTime] = useState({
-        "DAYS": 0,
-        "Hours": 0,
-        "Minutes": 0
-    });
-
-    useEffect(() => {
-        const target = new Date('2025-04-26T06:30:00Z').getTime();
-        const now = new Date().getTime();
-        const distance = target - now;
-        if (distance < 0) {
-            setTime({
-              Days: 0,
-              Hours: 0,
-              Minutes: 0,
-            });
-            return;
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      let target;
+      if (targetDate) {
+        if (typeof targetDate === 'string') {
+          target = new Date(targetDate).getTime();
+        } else if (targetDate instanceof Date) {
+          target = targetDate.getTime();
+        } else if (typeof targetDate === 'number') {
+          target = targetDate;
+        } else {
+          target = new Date('2026-04-11T05:30:00Z').getTime();
         }
-        
-        setTime({
-            Days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-            Hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-            Minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        });
-        
-        const interval = setInterval(() => {
-          const now = new Date().getTime();
-          const distance = target - now;
-    
-          if (distance < 0) {
-            clearInterval(interval);
-            setTime({
-              "Days": 0,
-              "Hours": 0,
-              "Minutes": 0,
-            });
-          } else {
-            setTime({
-              "Days": Math.floor(distance / (1000 * 60 * 60 * 24)),
-              "Hours": Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-              "Minutes": Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-            });
-          }
-        }, 1000);
-    
-        return () => clearInterval(interval);
-      }, []);
+      } else {
+        target = new Date('2026-04-11T05:30:00Z').getTime();
+      }
+      
+      const difference = target - new Date().getTime();
 
-    return(
-      <Container className="flex mx-5 px-5 lg:mx-0 my-4 items-center lg:items-end">
-          {
-              Object.entries(Time).map(([unit, value]) => (
-                  <Box key={unit}>
-                    <Timebox className="flex items-center justify-center w-15 lg:w-20 h-10 lg:h-20">
-                        <TimeNumber className="text-white text-xl lg:text-3xl font-medium font-textfont">
-                            {value.toString().padStart(2, '0')}
-                        </TimeNumber>
-                    </Timebox>
-                    <Timetext className="ml-2 mr-2 text-white text-md lg:text-2xl font-medium font-textfont md:ml-0 md:mr-0">
-                        {unit}
-                    </Timetext>
-                  </Box>
-              ))
-          }
-      </Container>
-    )
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        });
+      } else {
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  const formatNumber = (num) => {
+    if (num === null || num === undefined || isNaN(num)) {
+      return "00";
+    }
+    const numValue = Number(num);
+    if (isNaN(numValue)) {
+      return "00";
+    }
+    return String(Math.max(0, Math.floor(numValue))).padStart(2, "0");
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center py-16 md:py-24">
+      <h2
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.1em] text-center text-white mb-16 uppercase"
+        style={{ fontFamily: "Bungee, sans-serif" }}
+      >
+        Countdown
+      </h2>
+      <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8">
+        <FlipDigit value={formatNumber(timeLeft.days)} label="Days" />
+        <div className="flex flex-col gap-6 pb-12">
+          <div className="w-5 h-4 sm:w-6 sm:h-5 md:w-7 md:h-6 rounded-lg bg-red" />
+          <div className="w-5 h-4 sm:w-6 sm:h-5 md:w-7 md:h-6 rounded-lg bg-red" />
+        </div>
+        <FlipDigit value={formatNumber(timeLeft.hours)} label="Hours" />
+        <div className="flex flex-col gap-6 pb-12">
+          <div className="w-5 h-4 sm:w-6 sm:h-5 md:w-7 md:h-6 rounded-lg bg-red" />
+          <div className="w-5 h-4 sm:w-6 sm:h-5 md:w-7 md:h-6 rounded-lg bg-red" />
+        </div>
+        <FlipDigit value={formatNumber(timeLeft.minutes)} label="Minutes" />
+      </div>
+    </div>
+  );
 }
