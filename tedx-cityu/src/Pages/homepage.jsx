@@ -27,14 +27,16 @@ export default function HomePage() {
 
     // const isTablet = windowWidth >= mobileBreakpoint && windowWidth < tabletBreakpoint;
     return (
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen bg-black flex flex-col">
             {/* <Banner show={false}/>
             <Counter />
             <AboutTedx show={false}/>
             <SpeakerCard />
             <PerformerCard />
             <SponsorCard /> */}
-            <Timer />
+            <div className="flex-1 flex items-center justify-center">
+                <Timer />
+            </div>
         </div>
     );
 }
