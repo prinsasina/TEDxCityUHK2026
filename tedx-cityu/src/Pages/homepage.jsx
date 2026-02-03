@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { Banner } from "../Components/banner";
 import Counter from "../Components/Counter";
 import AboutTedx from "../Components/aboutTedx";
@@ -7,6 +8,7 @@ import SpeakerCard from "../Components/SpeakerCard";
 import PerformerCard from "../Components/PerformerCard";
 import SponsorCard from "../Components/SponsorCard";
 import Timer from "../Components/timer";
+import TEDxTeam from "../Assets/TEDxTeam2025.png";
 
 // const mobileBreakpoint = 768; // Adjust as needed for your design
 // const tabletBreakpoint = 1024; // Adjust as needed for your design
@@ -29,6 +31,7 @@ const AnimatedText = styled.div`
 `;
 
 export default function HomePage() {
+    const navigate = useNavigate();
     // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     // useEffect(() => {
@@ -59,7 +62,14 @@ export default function HomePage() {
             <div className="flex-1 flex items-center justify-center pt-[200px] pb-[200px]">
                 <Timer />
             </div>
-            <div className="bg-white h-[15px] w-full" />
+            <div className="w-full">
+                <img src={TEDxTeam} alt="TEDx CityU Team" className="w-full h-auto" />
+            </div>
+            <div className="w-full flex justify-end pr-4 sm:pr-6 md:pr-8 lg:pr-10 pb-4 sm:pb-6 md:pb-8 lg:pb-10">
+                <button onClick={() => navigate('/about')} className="bg-black border-4 border-white text-white px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-6 lg:px-12 lg:py-6 text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold hover:bg-white hover:text-black transition-colors duration-300">
+                    READ MORE
+                </button>
+            </div>
         </div>
     );
 }
