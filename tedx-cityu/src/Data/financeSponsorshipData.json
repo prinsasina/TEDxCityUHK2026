@@ -1,11 +1,30 @@
 [
     {
-        "_example": "Remove this example object and add your team members below",
-        "img": "Finance and Sponsorship/filename.jpg",
-        "fname": "First Name",
-        "lname": "Last Name",
-        "major": "Year X, Major Name",
-        "origin": "Country/Region",
-        "position": "Position Title"
+        "img": "Finance and Sponsorship/Mahekpreet KAUR.jpeg",
+        "fname": "Kaur",
+        "lname": "Mahekpreet",
+        "major": "Year 3, BBA Management & Finance",
+        "position": "Director"
+    },
+    {
+        "img": "Finance and Sponsorship/Clarissa.jpeg",
+        "fname": "Clarissa Regina",
+        "lname": "Himawan",
+        "major": "Year 1, Accountancy",
+        "position": "Manager"
+    },
+    {
+        "img": "Finance and Sponsorship/Flaudie.jpg",
+        "fname": "Flaudie Charistie",
+        "lname": " Tjhia",
+        "major": "Year 1, Accountancy",
+        "position": "Manager"
+    },
+    {
+        "img": "Finance and Sponsorship/Rana Ahmed.jpg",
+        "fname": "Rana Muhammad",
+        "lname": "Ahmed",
+        "major": "Year 1, Computational Finance & Financial Technology",
+        "position": "Manager"
     }
 ]
