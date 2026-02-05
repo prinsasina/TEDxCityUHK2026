@@ -1,11 +1,44 @@
 [
     {
-        "_example": "Remove this example object and add your team members below",
-        "img": "Human Resources/filename.jpg",
-        "fname": "First Name",
-        "lname": "Last Name",
-        "major": "Year X, Major Name",
-        "origin": "Country/Region",
-        "position": "Position Title"
+        "img": "Human Resources/Aileen Galih.jpeg",
+        "fname": "Aileen Vitta Budiman",
+        "lname": "Galih",
+        "major": "Year 1, Materials Science and Engineering",
+        "position": "Director"
+    },
+    {
+        "img": "Human Resources/Yahan Zhang.jpeg",
+        "fname": "Yahan",
+        "lname": "Zhang",
+        "major": "Year 2, Finance",
+        "position": "Director"
+    },
+    {
+        "img": "Human Resources/elycia trishelle.jpeg",
+        "fname": "Elycia",
+        "lname": "Trishelle",
+        "major": "Year 2, Global Business",
+        "position": "Supervisor"
+    },
+    {
+        "img": "Human Resources/lance linus lee.jpg",
+        "fname": "Lance Linus",
+        "lname": "Lee",
+        "major": "Year 1, Innovation Enterprise Engineering",
+        "position": "Manager"
+    },
+    {
+        "img": "Human Resources/Thu Shoun Haythi Saing.jpeg",
+        "fname": "Thu Shoun Haythi (Priscilla)",
+        "lname": "Saing",
+        "major": "Year 2, Environmental Science, Finance & Engineering",
+        "position": "Manager"
+    },
+    {
+        "img": "Human Resources/Suha Islam.JPG",
+        "fname": "Nadhifa Islam Suha",
+        "lname": "Nizami",
+        "major": "Year 3, Finance",
+        "position": "Manager"
     }
 ]
