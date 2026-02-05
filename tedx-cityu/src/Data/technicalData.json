@@ -1,11 +1,37 @@
 [
     {
-        "_example": "Remove this example object and add your team members below",
-        "img": "Technical/filename.jpg",
-        "fname": "First Name",
-        "lname": "Last Name",
-        "major": "Year X, Major Name",
-        "origin": "Country/Region",
-        "position": "Position Title"
+        "img": "Technical/Sasina Parinkarn.png",
+        "fname": "Sasina",
+        "lname": "Parinkarn",
+        "major": "Year 2, Computer Science",
+        "position": "Director"
+    },
+    {
+        "img": "Technical/Arista Wangsadjaja.jpeg",
+        "fname": "Arista",
+        "lname": "Wangsadjaja",
+        "major": "Year 2, Computer Science",
+        "position": "Manager"
+    },
+    {
+        "img": "Technical/King Lam.jpg",
+        "fname": "King Wang",
+        "lname": "Lam",
+        "major": "Year 1, Innovation Enterprise Engineering",
+        "position": "Manager"
+    },
+    {
+        "img": "Technical/Steven Sie Santosa.jpeg",
+        "fname": "Steven Sie",
+        "lname": "Santosa",
+        "major": "Year 2, Data Science",
+        "position": "Manager"
+    },
+    {
+        "img": "Technical/Joseph Andrei Wong.jpeg",
+        "fname": "Joseph Andrei",
+        "lname": "Wong",
+        "major": "Year 3, Financial Technology",
+        "position": "Manager"
     }
 ]

@@ -53,7 +53,7 @@ const Position = styled.p`
   font-weight: bold;
 `;
 
-const MemberCard = ({ img, fname, lname, major, origin, position }) => {
+const MemberCard = ({ img, fname, lname, major, position }) => {
   return (
     <CardContainer>
       <ImageContainer>
@@ -69,7 +69,6 @@ const MemberCard = ({ img, fname, lname, major, origin, position }) => {
         </TopSection>
         <BottomSection>
           <p>{major}</p>
-          <p>{origin}</p>
           <Position>{position}</Position>
         </BottomSection>
       </TextContent>

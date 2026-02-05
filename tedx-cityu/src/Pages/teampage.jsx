@@ -241,7 +241,6 @@ export default function TeamPage() {
                                 fname={item.fname}
                                 lname={item.lname}
                                 major={item.major}
-                                origin={item.origin}
                                 position={item.position}
                                 cardWidth="350px"
                                 cardHeight="550px"
@@ -280,7 +279,6 @@ export default function TeamPage() {
                                     fname={item.fname}
                                     lname={item.lname}
                                     major={item.major}
-                                    origin={item.origin}
                                     position={item.position}
                                 />
                             </SplideSlide>
