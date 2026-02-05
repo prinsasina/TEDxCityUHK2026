@@ -1,11 +1,37 @@
 [
     {
-        "_example": "Remove this example object and add your team members below",
-        "img": "Creative/filename.jpg",
-        "fname": "First Name",
-        "lname": "Last Name",
-        "major": "Year X, Major Name",
-        "origin": "Country/Region",
-        "position": "Position Title"
+        "img": "Creative/Rian Park.jpg",
+        "fname": "Rian",
+        "lname": "Park",
+        "major": "Year 3, Media and Communications",
+        "position": "Director"
+    },
+    {
+        "img": "Creative/Clancy Clarence Natania.jpeg",
+        "fname": "Clancy Clarence",
+        "lname": "Natania",
+        "major": "Year 1, Mechanical Engineering",
+        "position": "Manager"
+    },
+    {
+        "img": "Creative/Prinxd.jpeg",
+        "fname": "Jessica Regina",
+        "lname": "Aliudin",
+        "major": "Year 1, Computer Science",
+        "position": "Manager"
+    },
+    {
+        "img": "Creative/Kezia Halim.jpg",
+        "fname": "Kezia Gloria",
+        "lname": "Halim",
+        "major": "Year 1, Creative Media",
+        "position": "Manager"
+    },
+    {
+        "img": "Creative/Quenisha Yovela.jpeg",
+        "fname": "Quenisha",
+        "lname": "Yovela",
+        "major": "Year 1, Data Science",
+        "position": "Manager"
     }
 ]
