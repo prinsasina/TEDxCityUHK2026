@@ -1,11 +1,51 @@
 [
     {
-        "_example": "Remove this example object and add your team members below",
-        "img": "Event Management/filename.jpg",
-        "fname": "First Name",
-        "lname": "Last Name",
-        "major": "Year X, Major Name",
-        "origin": "Country/Region",
-        "position": "Position Title"
+        "img": "Event Management/Saima.jpeg",
+        "fname": "Saima",
+        "lname": "Limbu",
+        "major": "Year 3, BBA Management",
+        "position": "Director"
+    },
+    {
+        "img": "Event Management/cemi backup 88.jpeg",
+        "fname": "Nyoman Cempaka",
+        "lname": "Bunga",
+        "major": "Year 1, Global Business",
+        "position": "Manager"
+    },
+    {
+        "img": "Event Management/Fransiska Tabita.jpeg",
+        "fname": "Fransiska Tabita",
+        "lname": "Larasati",
+        "major": "Year 1, Global Business & Information Management",
+        "position": "Manager"
+    },
+    {
+        "img": "Event Management/Nicholas Lua.png",
+        "fname": "Nicholas Marcus",
+        "lname": " Lua",
+        "major": "Year 1, Cyber Security",
+        "position": "Manager"
+    },
+    {
+        "img": "Event Management/Felice Pranata.jpeg",
+        "fname": "Felice",
+        "lname": "Pranata",
+        "major": "Year 1, Biological Science",
+        "position": "Manager"
+    },
+    {
+        "img": "Event Management/joanne.jpeg",
+        "fname": "Joanne Edelina",
+        "lname": "Hartanto",
+        "major": "Year 1, Data Science",
+        "position": "Manager"
+    },
+    {
+        "img": "Event Management/Kaitlyn Wong.jpeg",
+        "fname": "Kaitlyn",
+        "lname": "Wong",
+        "major": "Year 1, BBA Management",
+        "position": "Manager"
     }
 ]
