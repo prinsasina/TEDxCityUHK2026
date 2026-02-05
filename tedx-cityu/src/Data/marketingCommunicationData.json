@@ -1,11 +1,37 @@
 [
     {
-        "_example": "Remove this example object and add your team members below",
-        "img": "Marketing and Communication/filename.jpg",
-        "fname": "First Name",
-        "lname": "Last Name",
-        "major": "Year X, Major Name",
-        "origin": "Country/Region",
-        "position": "Position Title"
+        "img": "Marketing and Communication/Dumi.jpeg",
+        "fname": "Dumezweni",
+        "lname": "Fuyane",
+        "major": "Year 3, Creative Media",
+        "position": "Director"
+    },
+    {
+        "img": "Marketing and Communication/Clayton Teo.jpg",
+        "fname": "Clayton",
+        "lname": "Teo",
+        "major": "Year 1, Data Science",
+        "position": "Manager"
+    },
+    {
+        "img": "Marketing and Communication/phoebe isabel.jpeg",
+        "fname": "Phoebe",
+        "lname": "Yu",
+        "major": "Year 1, Economics & Finance",
+        "position": "Manager"
+    },
+    {
+        "img": "Marketing and Communication/Kennard G.I.jpg",
+        "fname": "Kennard Gilbert",
+        "lname": "Immanuel",
+        "major": "Year 1, Biomedical Engineering",
+        "position": "Manager"
+    },
+    {
+        "img": "Marketing and Communication/lindsay.jpg",
+        "fname": "Gisella Lindsay",
+        "lname": "Wijaya",
+        "major": "Year 1, Economics & Finance",
+        "position": "Manager"
     }
 ]
