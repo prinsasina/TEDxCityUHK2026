@@ -1,11 +1,37 @@
 [
     {
-        "_example": "Remove this example object and add your team members below",
-        "img": "Speaker Relations/filename.jpg",
-        "fname": "First Name",
-        "lname": "Last Name",
-        "major": "Year X, Major Name",
-        "origin": "Country/Region",
-        "position": "Position Title"
+        "img": "Speaker Relations/Ruth Joelin.jpeg",
+        "fname": "Ruth Joelin",
+        "lname": "Dharmadi",
+        "major": "Year 1, Data Science",
+        "position": "Director"
+    },
+    {
+        "img": "Speaker Relations/Adryan Tan.jpeg",
+        "fname": "Adryan Christopher",
+        "lname": "Tan",
+        "major": "Year 1, Economics & Finance",
+        "position": "Manager"
+    },
+    {
+        "img": "Speaker Relations/Anice Darlene.jpeg",
+        "fname": "Anice Darlene",
+        "lname": "Tjandra",
+        "major": "Year 1, Architecture & Civil Engineering",
+        "position": "Manager"
+    },
+    {
+        "img": "Speaker Relations/nightt.jpeg",
+        "fname": "Poole Gabrielle Eileen",
+        "lname": "Artifice",
+        "major": "Year 3, Criminology & Sociology",
+        "position": "Manager"
+    },
+    {
+        "img": "Speaker Relations/Ni Shang.jpeg",
+        "fname": "Ni",
+        "lname": "Shang",
+        "major": "Year 1, Construction Project Management",
+        "position": "Manager"
     }
 ]
