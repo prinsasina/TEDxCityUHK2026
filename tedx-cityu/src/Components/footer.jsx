@@ -10,7 +10,7 @@ export default function Footer() {
 
       <div className="flex justify-center items-center gap-10 mb-8 md:gap-10 md:mb-8">
         <a
-          href="https://www.instagram.com/tedxcityuhongkong/"
+          href="https://www.instagram.com/tedxcityuhk/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Follow us on Instagram"
