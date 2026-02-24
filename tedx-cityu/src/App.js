@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"; // Tambah useLocation
 import TeamPage from "./Pages/teampage";
-import AboutPage from "./Pages/aboutpage";
 import HomePage from "./Pages/homepage";
 import PastEventPage from "./Pages/pasteventpage";
 import Navbar from "./Components/navbar";
 import Footer from "./Components/footer";
 import SpeakerPage from "./Pages/Speakerpage";
 import PerformerPage from "./Pages/Performerpage";
+import NewAboutTedx from "./Components/newaboutTedx";
 
 const Container = styled.div`
   overflow-x: hidden;
 `;
 
-function App() {
+function AppContent() {
+  const location = useLocation();
   const mobileBreakpoint = 768;
   const tabletBreakpoint = 1024;
 
@@ -28,25 +29,31 @@ function App() {
     };
 
     window.addEventListener('resize', handleResize);
-
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const isAboutPage = location.pathname === '/about';
+
   return (
     <Container>
-      <BrowserRouter>
-        {isMobile ? <Navbar /> : isTablet ? <Navbar /> : <Navbar />}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/crew" element={<TeamPage isMobile={isMobile} isTablet={isTablet} />} />
-          <Route path="/pastevent" element={<PastEventPage />} />
-          <Route path="/speaker/:path" element={<SpeakerPage />} />
-          {/* <Route path="/performer/:path" element={<PerformerPage />} /> */}
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      {isMobile ? <Navbar /> : isTablet ? <Navbar /> : <Navbar />}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<NewAboutTedx show={true} />} />
+        <Route path="/crew" element={<TeamPage isMobile={isMobile} isTablet={isTablet} />} />
+        <Route path="/pastevent" element={<PastEventPage />} />
+        <Route path="/speaker/:path" element={<SpeakerPage />} />
+      </Routes>
+      {!isAboutPage && <Footer />}
     </Container>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
 
