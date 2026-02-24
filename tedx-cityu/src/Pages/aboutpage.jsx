@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { styled } from "styled-components";
-import NewAboutTedx from "../Components/newaboutTedx";
+import AboutTedx from "../Components/aboutTedx";
 
 const Container = styled.div``;
 
@@ -12,7 +12,7 @@ export default function AboutPage() {
 
   return (
     <Container>
-      <NewAboutTedx show={true} />
+      <AboutTedx show={true} />
     </Container>
   );
 }

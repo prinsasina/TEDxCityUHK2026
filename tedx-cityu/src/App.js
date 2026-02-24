@@ -8,7 +8,7 @@ import Navbar from "./Components/navbar";
 import Footer from "./Components/footer";
 import SpeakerPage from "./Pages/Speakerpage";
 import PerformerPage from "./Pages/Performerpage";
-import NewAboutTedx from "./Components/newaboutTedx";
+import AboutTedx from "./Components/aboutTedx";
 
 const Container = styled.div`
   overflow-x: hidden;
@@ -39,7 +39,7 @@ function AppContent() {
       {isMobile ? <Navbar /> : isTablet ? <Navbar /> : <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<NewAboutTedx show={true} />} />
+        <Route path="/about" element={<AboutTedx show={true} />} />
         <Route path="/crew" element={<TeamPage isMobile={isMobile} isTablet={isTablet} />} />
         <Route path="/pastevent" element={<PastEventPage />} />
         <Route path="/speaker/:path" element={<SpeakerPage />} />
