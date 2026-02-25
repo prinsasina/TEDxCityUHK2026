@@ -59,7 +59,13 @@ export default function HomePage() {
                 A <span className="font-bold text-red">TEDx</span><span className="font-bold">CITYUHK</span> Production
             </AnimatedText>
             <div className="bg-white h-[15px] w-full" />
-            <div className="flex-1 flex items-center justify-center pt-[200px] pb-[200px]">
+            <div className="flex-1 items-center justify-center pt-[200px] pb-[200px]">
+              <h2
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.1em] text-center text-white mb-8 md:mb-12 uppercase"
+                style={{ fontFamily: "Bungee, sans-serif" }}
+              >
+                Countdown
+              </h2>
                 <Timer />
             </div>
             <div className="w-full">
