@@ -54,11 +54,9 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* NEW: Theme Section - "THE POWER OF" repeated */}
+      {/* NEW: Theme Section - "THE POWER OF" */}
       <section className="text-white py-16 px-4">
         <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-center space-y-4">
-          <div>THE POWER OF</div>
-          <div>THE POWER OF</div>
           <div>THE POWER OF</div>
         </div>
       </section>
@@ -67,9 +65,7 @@ export default function HomePage() {
       <section className="text-white py-16 px-4 max-w-4xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">About</h2>
         <p className="text-lg sm:text-xl leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-          quis nostrud exercitation...
+          TEXT
         </p>
       </section>
 
@@ -83,7 +79,7 @@ export default function HomePage() {
 
       {/* NEW: Visual element description - you may want to add an image here */}
       <div className="text-white text-center py-8 text-xl italic">
-        THE BACK OF PEOPLE WITH THE RETRO HALFTONE EFFECT
+        
       </div>
 
       {/* Your existing team image and button */}
