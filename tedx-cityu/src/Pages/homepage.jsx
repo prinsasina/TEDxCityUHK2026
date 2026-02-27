@@ -31,51 +31,70 @@ const AnimatedText = styled.div`
 `;
 
 export default function HomePage() {
-    const navigate = useNavigate();
-    // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const navigate = useNavigate();
+  
+  return (
+    <div className="min-h-screen bg-black flex flex-col">
+      {/* Your existing animated text */}
+      <AnimatedText className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center">
+        A <span className="font-bold text-red">TEDx</span><span className="font-bold">CITYUHK</span> Production
+      </AnimatedText>
+      
+      <div className="bg-white h-[15px] w-full" />
+      
+      {/* NEW: Event Details Section */}
+      <section className="text-white py-16 px-4 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+          APRIL 11TH 2026
+        </h2>
+        <p className="text-xl sm:text-2xl mb-2">SATURDAY 13:30 - 18:00</p>
+        <p className="text-lg sm:text-xl mb-6">
+          Wong Cheung Lo Hui Yuet Hall<br />
+          Lau Ming Wai Academic Building (AC3)
+        </p>
+      </section>
 
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         setWindowWidth(window.innerWidth);
-    //     };
-
-    //     window.addEventListener('resize', handleResize);
-
-    //     return () => {
-    //         window.removeEventListener('resize', handleResize);
-    //     };
-    // }, []);
-
-    // const isTablet = windowWidth >= mobileBreakpoint && windowWidth < tabletBreakpoint;
-    return (
-        <div className="min-h-screen bg-black flex flex-col">
-            {/* <Banner show={false}/>
-            <Counter />
-            <AboutTedx show={false}/>
-            <SpeakerCard />
-            <PerformerCard />
-            <SponsorCard /> */}
-            <AnimatedText className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center">
-                A <span className="font-bold text-red">TEDx</span><span className="font-bold">CITYUHK</span> Production
-            </AnimatedText>
-            <div className="bg-white h-[15px] w-full" />
-            <div className="flex-1 items-center justify-center pt-[200px] pb-[200px]">
-              <h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.1em] text-center text-white mb-8 md:mb-12 uppercase"
-                style={{ fontFamily: "Bungee, sans-serif" }}
-              >
-                Countdown
-              </h2>
-                <Timer />
-            </div>
-            <div className="w-full">
-                <img src={TEDxTeam} alt="TEDx CityU Team" className="w-full h-auto" />
-            </div>
-            <div className="w-full flex justify-end pr-4 sm:pr-6 md:pr-8 lg:pr-10 pb-4 sm:pb-6 md:pb-8 lg:pb-10">
-                <button onClick={() => navigate('/about')} className="bg-black border-4 border-white text-white px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-6 lg:px-12 lg:py-6 text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold hover:bg-white hover:text-black transition-colors duration-300">
-                    READ MORE
-                </button>
-            </div>
+      {/* NEW: Theme Section - "THE POWER OF" repeated */}
+      <section className="text-white py-16 px-4">
+        <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-center space-y-4">
+          <div>THE POWER OF</div>
+          <div>THE POWER OF</div>
+          <div>THE POWER OF</div>
         </div>
-    );
+      </section>
+
+      {/* NEW: About Section with placeholder text */}
+      <section className="text-white py-16 px-4 max-w-4xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">About</h2>
+        <p className="text-lg sm:text-xl leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+          quis nostrud exercitation...
+        </p>
+      </section>
+
+      {/* Your existing Countdown section */}
+      <div className="flex-1 items-center justify-center pt-[200px] pb-[200px]">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white mb-8 uppercase">
+          Countdown
+        </h2>
+        <Timer />
+      </div>
+
+      {/* NEW: Visual element description - you may want to add an image here */}
+      <div className="text-white text-center py-8 text-xl italic">
+        THE BACK OF PEOPLE WITH THE RETRO HALFTONE EFFECT
+      </div>
+
+      {/* Your existing team image and button */}
+      <div className="w-full">
+        <img src={TEDxTeam} alt="TEDx CityU Team" className="w-full h-auto" />
+      </div>
+      <div className="w-full flex justify-end pr-4 sm:pr-6 pb-4">
+        <button onClick={() => navigate('/about')} className="bg-black border-4 border-white text-white px-6 py-3 font-bold hover:bg-white hover:text-black transition">
+          READ MORE
+        </button>
+      </div>
+    </div>
+  );
 }
