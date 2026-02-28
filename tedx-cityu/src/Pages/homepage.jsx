@@ -10,8 +10,8 @@ import SponsorCard from "../Components/SponsorCard";
 import Timer from "../Components/timer";
 import TEDxTeam from "../Assets/TEDxTeam2025.png";
 
-// const mobileBreakpoint = 768; // Adjust as needed for your design
-// const tabletBreakpoint = 1024; // Adjust as needed for your design
+const mobileBreakpoint = 768; 
+const tabletBreakpoint = 1024;
 
 const riseFromBottom = keyframes`
   0% {
@@ -35,54 +35,63 @@ export default function HomePage() {
   
   return (
     <div className="min-h-screen bg-black flex flex-col">
-      {/* Your existing animated text */}
       <AnimatedText className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center">
         A <span className="font-bold text-red">TEDx</span><span className="font-bold">CITYUHK</span> Production
       </AnimatedText>
       
       <div className="bg-white h-[15px] w-full" />
       
-      {/* NEW: Event Details Section */}
-      <section className="text-white py-16 px-4 text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-          APRIL 11TH 2026
-        </h2>
-        <p className="text-xl sm:text-2xl mb-2">SATURDAY 13:30 - 18:00</p>
-        <p className="text-lg sm:text-xl mb-6">
-          Wong Cheung Lo Hui Yuet Hall<br />
-          Lau Ming Wai Academic Building (AC3)
-        </p>
-      </section>
+      {/*Theme + Event Details Section */}
+      <section className="relative bg-black text-white text-center py-24 overflow-hidden">
 
-      {/* NEW: Theme Section - "THE POWER OF" */}
-      <section className="text-white py-16 px-4">
-        <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-center space-y-4">
-          <div>THE POWER OF</div>
+      {/* Red Circle */}
+      <div className="absolute w-[400px] h-[400px] bg-red-600 rounded-full left-1/2 -translate-x-1/2 top-20 z-0" />
+
+      {/* Content */}
+      <div className="relative z-10">
+      <h2 className="text-4xl md:text-6xl font-extrabold mb-6">
+        THE POWER OF
+      </h2>
+
+      <h1 className="text-6xl md:text-8xl font-extrabold text-gray-100">
+        WHY NOT?
+      </h1>
+
+      <div className="mt-8 text-sm md:text-base text-gray-300">
+        APRIL 11TH 2026 <br />
+        SATURDAY 13:30 - 18:00 <br />
+        Wong Cheung Lo Hui Yuet Hall
         </div>
+      </div>
       </section>
 
-      {/* NEW: About Section with placeholder text */}
-      <section className="text-white py-16 px-4 max-w-4xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">About</h2>
-        <p className="text-lg sm:text-xl leading-relaxed">
-          TEXT
+      {/* About Section with placeholder text */}
+      <section className="flex flex-col md:flex-row w-full">
+
+        <div className="bg-red-600 text-white flex-1 p-16 text-center">
+
+      </div>
+
+      <div className="bg-black text-white flex-1 p-16">
+        <p className="leading-loose text-sm md:text-base">
+        LEGACY TEXT
         </p>
+      </div>
+
       </section>
 
-      {/* Your existing Countdown section */}
+      {/* Countdown section */}
       <div className="flex-1 items-center justify-center pt-[200px] pb-[200px]">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white mb-8 uppercase">
-          Countdown
-        </h2>
-        <Timer />
-      </div>
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.1em] text-center text-white mb-8 md:mb-12 uppercase"
+          style={{ fontFamily: "Bungee, sans-serif" }}
+            >
+              Countdown
+              </h2>
+                <Timer />
+            </div>
 
-      {/* NEW: Visual element description - you may want to add an image here */}
-      <div className="text-white text-center py-8 text-xl italic">
-        
-      </div>
-
-      {/* Your existing team image and button */}
+      {/* Existing team image and button */}
       <div className="w-full">
         <img src={TEDxTeam} alt="TEDx CityU Team" className="w-full h-auto" />
       </div>
