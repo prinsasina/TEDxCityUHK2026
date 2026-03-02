@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import p1 from "../Assets/About/p1.png"
 import p2 from "../Assets/About/p2.png"
@@ -333,7 +332,10 @@ const TextBlocksPanel = styled.div`
 const RedTextBlock = styled.div`
   background-color: #c60a14;
   height: 45%;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
   border: 4px solid black;
 
   clip-path: polygon(
@@ -349,6 +351,7 @@ const RedTextBlock = styled.div`
 
   @media (max-width: 480px) {
     border-width: 1px;
+    padding: 0.5rem;
   }
 `;
 
@@ -373,6 +376,11 @@ const BlackTextBlock = styled.div`
   @media (max-width: 768px) {
     padding: 1rem;
     border-width: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   @media (max-width: 480px) {
@@ -776,36 +784,41 @@ const QuestionMark = styled.div`
 const AboutTedContent = styled.div`
   max-width: 900px;
   margin: 2rem auto 0;
+  padding: 0 1.5rem;
   text-align: center;
   
   p {
     font-size: 1.2rem;
-    line-height: 1.9;
+    line-height: 2;
     color: white;
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 1.5rem;
     text-align: center;
     font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
   @media (max-width: 1024px) {
+    padding: 0 1.25rem;
     p {
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.9;
     }
   }
 
   @media (max-width: 768px) {
+    padding: 0 1rem;
     p {
-      font-size: 0.8rem;
-      line-height: 1.4;
+      font-size: 0.95rem;
+      line-height: 1.8;
     }
   }
 
   @media (max-width: 480px) {
+    padding: 0 0.75rem;
     p {
-      font-size: 0.6rem;
-      line-height: 1.2;
+      font-size: 0.875rem;
+      line-height: 1.7;
     }
   }
 `;
@@ -1027,8 +1040,6 @@ const CollageImg = styled.img`
 `;
 
 export default function AboutTedx({ show = true }) {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -1123,28 +1134,46 @@ export default function AboutTedx({ show = true }) {
           <AboutTedContent>
             <p>
               <span className="text-red font-bold">TED</span> is on a mission to discover and spread ideas
-              that spark imagination, embrace possibility and catalyze impact. Our organization is devoted to
+              that spark imagination, embrace possibility and catalyze impact. 
+            </p>
+            <p> 
+              Our organization is devoted to
               curiosity, reason, wonder and the pursuit of knowledge — without an agenda. We welcome people from
               every discipline and culture who seek a deeper understanding of the world and connection with others,
               and we invite everyone to engage with ideas and activate them in your community.
+            </p>
+            <p>
               <span className="text-red font-bold"> TED</span> began in 1984 as a conference where Technology,
               Entertainment and Design converged, but today it spans a multitude of worldwide communities and
               initiatives exploring everything from science and business to education, arts and global issues.
+            </p>
+            <p>
               In addition to the hundreds of <span className="text-red font-bold">TED</span> Talks curated from
               our annual conferences and published on <span className="text-red font-bold">TED</span>.com, we
               produce original podcasts, short video series, animated educational lessons (<span className="text-red font-bold">TED</span>-Ed) and TV
               programs that are translated into more than 100 languages and distributed via partnerships around the world.
               Each year, more than 3,000 independently run <span className="text-red font-bold">TEDx</span> events
-              bring people together to share ideas and bridge divides in communities on every continent. Through
-              the Audacious Project, <span className="text-red font-bold">TED</span> has helped catalyze more
+              bring people together to share ideas and bridge divides in communities on every continent. 
+            </p>
+            <p>
+              Through the Audacious Project, <span className="text-red font-bold">TED</span> has helped catalyze more
               than $3 billion in funding for projects that seek to make the world more beautiful, sustainable and
               just. In 2020, <span className="text-red font-bold">TED</span> launched Countdown, an initiative to
-              accelerate solutions to the climate crisis and mobilize a movement for a net-zero future. View a full
-              list of <span className="text-red font-bold">TED</span> many programs and initiatives.
-              <span className="text-red font-bold">TED</span> is owned by a nonprofit, nonpartisan foundation.
-              Our aim is to help create a future worth pursuing for all.
-              Follow <span className="text-red font-bold">TED</span> on Twitter, Facebook, Instagram, TikTok and on LinkedIn.
+              accelerate solutions to the climate crisis and mobilize a movement for a net-zero future.
             </p>
+            <p>
+            <span className="text-red font-bold">TED</span> is owned by a nonprofit, nonpartisan foundation. <br/> Our aim is to help create a future worth pursuing for all.
+            </p>
+            <div className="w-full flex justify-center pb-4 sm:pb-6 md:pb-8 lg:pb-10">
+                <a
+                  href="https://www.ted.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-black border-4 border-white text-white px-5 py-2.5 sm:px-7 sm:py-3.5 md:px-10 md:py-5 lg:px-10 lg:py-5 text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl font-bold hover:bg-white hover:text-black transition-colors duration-300"
+                >
+                  READ MORE
+                </a>
+            </div>
           </AboutTedContent>
         </AboutTedSection>
 
