@@ -1198,7 +1198,7 @@ export default function AboutTedx({ show = true }) {
               </a>
             </SocialIcons>
             <p style={{ marginTop: '2rem', color: 'rgb(147,141,140)' }}>
-              Copyright© 2026 TEDxCityUHongKong
+              Copyright© 2026 TEDxCityUHK
             </p>
           </SocialPanel>
           <ImageCollage>

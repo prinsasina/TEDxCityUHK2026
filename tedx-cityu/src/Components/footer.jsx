@@ -48,7 +48,7 @@ export default function Footer() {
       </div>
 
       <p className="text-lg text-[rgb(147,141,140)] m-0 md:text-lg">
-        Copyright© 2026 TEDxCityUHongKong
+        Copyright© 2026 TEDxCityUHK
       </p>
     </footer>
   );
