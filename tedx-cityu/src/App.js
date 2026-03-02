@@ -9,6 +9,7 @@ import Footer from "./Components/footer";
 import SpeakerPage from "./Pages/Speakerpage";
 import PerformerPage from "./Pages/Performerpage";
 import AboutTedx from "./Components/aboutTedx";
+import RegistrationPage from "./Pages/registrationpage";
 
 const Container = styled.div`
   overflow-x: hidden;
@@ -42,6 +43,7 @@ function AppContent() {
         <Route path="/about" element={<AboutTedx show={true} />} />
         <Route path="/crew" element={<TeamPage isMobile={isMobile} isTablet={isTablet} />} />
         <Route path="/pastevent" element={<PastEventPage />} />
+        <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/speaker/:path" element={<SpeakerPage />} />
       </Routes>
       {!isAboutPage && <Footer />}

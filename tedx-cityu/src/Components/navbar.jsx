@@ -115,9 +115,9 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const Selection_list = [
     { label: "About", url: "/about" },
-    // { label: 'Sponsors', url: '/sponsor' },
     { label: "Crew", url: "/crew" },
     { label: "Past Events", url: "/pastevent" },
+    { label: "Registration", url: "/registration" },
   ];
   const navigate = useNavigate();
 
@@ -167,18 +167,6 @@ export default function Navbar() {
                 {selection.label}
               </Selection>
             ))}
-            {/* <Selection
-              className="text-black mx-11 text-base md:text-xl hover:text-yellow-400"
-              as="a"
-            >
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href=""
-              >
-                Registration
-              </a>
-            </Selection> */}
           </NavSelectionWrapper>
         </NavbarWrapper>
       )}
@@ -195,18 +183,6 @@ export default function Navbar() {
               {selection.label}
             </Selection>
           ))}
-          {/* <Selection
-            className="my-2 md:text-2xl text-xl text-black text-center"
-            as="a"
-          >
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href=""
-            >
-              Registration
-            </a>
-          </Selection> */}
         </MobileMenu>
       )}
     </Container>

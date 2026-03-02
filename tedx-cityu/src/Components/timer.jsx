@@ -94,12 +94,6 @@ export default function Timer({ targetDate }) {
 
   return (
     <div className="flex flex-col items-center justify-center py-8 md:py-12">
-      <h2
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.1em] text-center text-white mb-8 md:mb-12 uppercase"
-        style={{ fontFamily: "Bungee, sans-serif" }}
-      >
-        Countdown
-      </h2>
       <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8">
         <FlipDigit value={formatNumber(timeLeft.days)} label="Days" />
         <div className="flex flex-col gap-6 pb-12">
