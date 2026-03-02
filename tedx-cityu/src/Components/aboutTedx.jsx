@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import p1 from "../Assets/About/p1.png"
 import p2 from "../Assets/About/p2.png"
@@ -23,12 +22,14 @@ const Container = styled.div`
   width: 100%;
   color: white;
   min-height: 100vh;
+  overflow-x: hidden;
 `;
 
 const ContentWrapper = styled.div`
   max-width: 1600px;
   margin: 0 auto;
-  
+  padding: 0 1rem;
+
   @media (max-width: 768px) {
     padding: 0 0.5rem;
   }
@@ -40,16 +41,20 @@ const TopSection = styled.div`
   gap: 2rem;
   align-items: stretch;
   height: 600px;
-  
+
   @media (max-width: 1024px) {
-    height: 500px;
+    height: 450px;
     gap: 1rem;
   }
-  
+
   @media (max-width: 768px) {
-    flex-direction: column;
-    height: auto;
-    gap: 1rem;
+    height: 350px;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    height: 250px;
+    gap: 0.25rem;
   }
 `;
 
@@ -60,28 +65,41 @@ const LeftPanel = styled.div`
   flex-direction: column;
   gap: 2rem;
   position: relative;
-  
-  @media (max-width: 768px) {
-    flex: 1;
+
+  @media (max-width: 1024px) {
     gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.25rem;
   }
 `;
 
 const StackedImage = styled.div`
   position: relative;
   width: 100%;
+  height: 50%;
   overflow: hidden;
   background: #000;
   border: 4px solid black;
-  
+
   @media (max-width: 768px) {
-    aspect-ratio: 16/9;
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
   }
 `;
 
 const StackedImage2 = styled.div`
   position: relative;
   width: 100%;
+  height: 50%;
   border: 4px solid black;
   
   clip-path: polygon(
@@ -93,15 +111,13 @@ const StackedImage2 = styled.div`
 
   overflow: hidden;
   background: #000;
-  
+
   @media (max-width: 768px) {
-    aspect-ratio: 16/9;
-    clip-path: polygon(
-      0% 0%,
-      100% 0%,
-      100% 85%,
-      0% 100%
-    );
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
   }
 `;
 
@@ -146,21 +162,29 @@ const ImageTextOverlay = styled.div`
     font-size: 4rem; 
     margin-top: -0.5rem; 
   }
-  
+
   @media (max-width: 1024px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
     
     .about-part, .tedx-part {
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
   }
-  
+
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
     
     .about-part, .tedx-part {
-      font-size: 2rem;
-      margin-top: -0.3rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    
+    .about-part, .tedx-part {
+      font-size: 1rem;
     }
   }
 `;
@@ -186,14 +210,18 @@ const ImageTextOverlay2 = styled.div`
   letter-spacing: 3px;
   text-align: center;
   white-space: nowrap;
-  
+
   @media (max-width: 1024px) {
-    font-size: 2rem;
-  }
-  
-  @media (max-width: 768px) {
     font-size: 1.5rem;
-    top: 75%;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
   }
 `;
 
@@ -211,21 +239,13 @@ const RightPanel = styled.div`
     100% 92%,
     0% 100%
   );
-  
-  @media (max-width: 1024px) {
-    height: 90%;
-  }
-  
+
   @media (max-width: 768px) {
-    flex: 1;
-    height: 400px;
-    width: 100%;
-    clip-path: polygon(
-      0% 0%,
-      100% 0%,
-      100% 90%,
-      0% 100%
-    );
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
   }
 `;
 
@@ -244,16 +264,20 @@ const MidUpperSection = styled.div`
   gap: 0.5rem;
   margin-bottom: 4rem;
   height: 500px;
-  
+
   @media (max-width: 1024px) {
     height: 400px;
+    margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 768px) {
-    flex-direction: column;
-    height: auto;
-    gap: 1rem;
+    height: 300px;
     margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    height: 200px;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -264,11 +288,6 @@ const MonitorPanel = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  @media (max-width: 768px) {
-    flex: 1;
-    height: 300px;
-  }
 `;
 
 const Monitor = styled.div`
@@ -285,14 +304,13 @@ const Monitor = styled.div`
     95% 100%, 
     0% 100% 
   );
-  
+
   @media (max-width: 768px) {
-    clip-path: polygon(
-      0% 10%,
-      100% 5%,
-      98% 100%,
-      0% 100%
-    );
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
   }
 `;
 
@@ -301,17 +319,23 @@ const TextBlocksPanel = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  
+
   @media (max-width: 768px) {
-    flex: 1;
     gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.5rem;
   }
 `;
 
 const RedTextBlock = styled.div`
   background-color: #c60a14;
   height: 45%;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
   border: 4px solid black;
 
   clip-path: polygon(
@@ -320,15 +344,14 @@ const RedTextBlock = styled.div`
     100% 100%,
     3% 100%
   );
-  
+
   @media (max-width: 768px) {
-    height: 150px;
-    clip-path: polygon(
-      3% 15%,
-      100% 0%,
-      100% 100%,
-      3% 100%
-    );
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
+    padding: 0.5rem;
   }
 `;
 
@@ -345,15 +368,24 @@ const BlackTextBlock = styled.div`
     100% 100%,
     0% 100%
   );
-  
+
   @media (max-width: 1024px) {
     padding: 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
-    height: auto;
-    min-height: 200px;
     padding: 1rem;
+    border-width: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+    border-width: 1px;
   }
 `;
 
@@ -370,16 +402,20 @@ const BlockTitle = styled.h2`
   .red-text {
     color: #EB0028;
   }
-  
+
   @media (max-width: 1024px) {
     font-size: 2.5rem;
     margin-top: 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
-    font-size: 1.8rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
   }
 `;
 
@@ -391,14 +427,18 @@ const BlockSubtitle = styled.p`
   font-weight: 600;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  
+
   @media (max-width: 1024px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
-  
+
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
   }
 `;
 
@@ -408,73 +448,77 @@ const MidLowerSection = styled.div`
   gap: 2rem;
   margin-bottom: 2rem;
   align-items: stretch;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
+  min-height: 300px;
+
+  @media (max-width: 1024px) {
     gap: 1rem;
+    min-height: 250px;
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+    min-height: 200px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.25rem;
+    min-height: 150px;
   }
 `;
 
 const TealXPanel = styled.div`
   flex: 0 0 45%;
   position: relative;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible;
-
+  overflow: hidden;
   border: 4px solid black;
-
   clip-path: polygon(
     0% 0%,
     100% 0%,
     100% 95%,
     0% 90%
   );
-  
+  aspect-ratio: 1/1;
+
   @media (max-width: 768px) {
-    flex: 1;
-    height: 300px;
-    clip-path: polygon(
-      0% 0%,
-      100% 0%,
-      100% 90%,
-      0% 95%
-    );
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
   }
 `;
 
 const LoremPanel = styled.div`
   flex: 0 0 55%;
-  padding: 3rem;
+  padding: 2rem;
   color: white;
   display: flex;
   align-items: center;
   background: black;
-
   border: 4px solid black;
-
   clip-path: polygon(
     0% 0%,
     100% 0%,
     100% 100%,
     0% 95%
   );
-  
+  min-height: 100%;
+
   @media (max-width: 1024px) {
-    padding: 2rem;
-  }
-  
-  @media (max-width: 768px) {
-    flex: 1;
     padding: 1.5rem;
-    clip-path: polygon(
-      0% 0%,
-      100% 0%,
-      100% 100%,
-      0% 98%
-    );
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.75rem;
+    border-width: 1px;
   }
 `;
 
@@ -486,14 +530,56 @@ const LoremText = styled.p`
   font-family: 'Bungee', sans-serif;
   letter-spacing: 2px;
   text-align: center;
-  
-  @media (max-width: 1024px) {
+  margin: 0;
+  width: 100%;
+  word-break: break-word;
+
+  @media (max-width: 1200px) {
     font-size: 0.9rem;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
   }
-  
-  @media (max-width: 768px) {
+
+  @media (max-width: 1024px) {
     font-size: 0.8rem;
+    line-height: 1.4;
+    letter-spacing: 1.2px;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 0.7rem;
+    line-height: 1.3;
     letter-spacing: 1px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    line-height: 1.2;
+    letter-spacing: 0.8px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.5rem;
+    line-height: 1.15;
+    letter-spacing: 0.6px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.45rem;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 0.4rem;
+    line-height: 1;
+    letter-spacing: 0.4px;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.35rem;
+    line-height: 0.95;
+    letter-spacing: 0.3px;
   }
 `;
 
@@ -511,19 +597,19 @@ const AboutTedSection = styled.div`
     100% 100%,
     0% 100%
   );
-  
+
   @media (max-width: 1024px) {
     padding: 3rem 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 2rem 1rem;
-    clip-path: polygon(
-      0% 0%,
-      100% 2%,
-      100% 100%,
-      0% 100%
-    );
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 0.5rem;
+    border-width: 1px;
   }
 `;
 
@@ -534,9 +620,8 @@ const AboutTedTitle = styled.div`
   gap: 2rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
-  
+
   @media (max-width: 768px) {
-    flex-direction: column;
     gap: 1rem;
   }
 `;
@@ -557,15 +642,17 @@ const AboutText = styled.span`
   display: block;
   text-align: center;
   margin-top: 40%;
-  
+
   @media (max-width: 1024px) {
     font-size: 4rem;
-    margin-top: 30%;
   }
-  
+
   @media (max-width: 768px) {
-    font-size: 3rem;
-    margin-top: 0;
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
   }
 `;
 
@@ -577,13 +664,17 @@ const TedText = styled.span`
   line-height: 1;
   display: block;
   text-align: center;
-  
+
   @media (max-width: 1024px) {
     font-size: 4rem;
   }
-  
+
   @media (max-width: 768px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
   }
 `;
 
@@ -593,10 +684,13 @@ const StarburstContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-left: 2rem;
-  
+
   @media (max-width: 768px) {
-    margin-left: 0;
-    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 0.5rem;
   }
 `;
 
@@ -646,15 +740,20 @@ const Starburst = styled.div`
   );
   
   flex-shrink: 0;
-  
+
   @media (max-width: 1024px) {
     width: 200px;
     height: 200px;
   }
-  
+
   @media (max-width: 768px) {
     width: 150px;
     height: 150px;
+  }
+
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 100px;
   }
 `;
 
@@ -668,38 +767,58 @@ const QuestionMark = styled.div`
   color: white;
   font-family: 'Archivo Black', sans-serif;
   z-index: 2;
-  
+
   @media (max-width: 1024px) {
     font-size: 6rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.5rem;
   }
 `;
 
 const AboutTedContent = styled.div`
   max-width: 900px;
   margin: 2rem auto 0;
+  padding: 0 1.5rem;
   text-align: center;
   
   p {
     font-size: 1.2rem;
-    line-height: 1.9;
+    line-height: 2;
     color: white;
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 1.5rem;
     text-align: center;
     font-weight: 600;
-    
-    @media (max-width: 1024px) {
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0 1.25rem;
+    p {
       font-size: 1rem;
-      line-height: 1.7;
+      line-height: 1.9;
     }
-    
-    @media (max-width: 768px) {
-      font-size: 0.9rem;
-      line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+    p {
+      font-size: 0.875rem;
+      line-height: 1.7;
     }
   }
 `;
@@ -709,15 +828,13 @@ const FooterSection = styled.div`
   display: flex;
   gap: 2rem;
   padding-top: 3rem;
-  
+
   @media (max-width: 1024px) {
     gap: 1rem;
   }
-  
+
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 2rem;
-    padding-top: 2rem;
+    gap: 0.5rem;
   }
 `;
 
@@ -730,11 +847,13 @@ const SocialPanel = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  
+
+  @media (max-width: 1024px) {
+    padding: 1rem;
+  }
+
   @media (max-width: 768px) {
-    flex: 1;
-    padding: 1.5rem;
-    width: 100%;
+    padding: 0.5rem;
   }
 `;
 
@@ -745,14 +864,15 @@ const FollowUs = styled.h3`
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
-  
-  @media (max-width: 1024px) {
-    margin-top: 10%;
-  }
-  
+
   @media (max-width: 768px) {
-    margin-top: 0;
-    font-size: 2rem !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -774,26 +894,31 @@ const SocialIcons = styled.div`
     &:hover {
       color: #EB0028;
     }
+  }
+
+  @media (max-width: 1024px) {
+    gap: 1rem;
     
-    @media (max-width: 1024px) {
-      font-size: 1.5rem;
-      
-      svg {
-        width: 30px;
-        height: 30px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      svg {
-        width: 35px;
-        height: 35px;
-      }
+    svg {
+      width: 30px;
+      height: 30px;
     }
   }
-  
+
   @media (max-width: 768px) {
-    gap: 1rem;
+    gap: 0.5rem;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    svg {
+      width: 15px;
+      height: 15px;
+    }
   }
 `;
 
@@ -802,17 +927,19 @@ const ImageCollage = styled.div`
   display: flex;
   gap: 0.8rem;
   height: 500px;
-  
+
   @media (max-width: 1024px) {
     height: 400px;
+    gap: 0.5rem;
   }
-  
+
   @media (max-width: 768px) {
-    flex: 1;
-    flex-direction: column;
-    height: auto;
-    gap: 1rem;
-    width: 100%;
+    height: 300px;
+    gap: 0.25rem;
+  }
+
+  @media (max-width: 480px) {
+    height: 200px;
   }
 `;
 
@@ -828,10 +955,13 @@ const LeftCollage = styled.div`
     object-fit: cover;
     display: block;
   }
-  
+
   @media (max-width: 768px) {
-    height: 250px;
-    width: 100%;
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
   }
 `;
 
@@ -841,10 +971,6 @@ const RightCollage = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  
-  @media (max-width: 768px) {
-    gap: 1rem;
-  }
 `;
 
 // for p7
@@ -866,15 +992,13 @@ const RightImage1 = styled.div`
     100% 90%,
     0% 100%
   );
-  
+
   @media (max-width: 768px) {
-    height: 250px;
-    clip-path: polygon(
-      0% 0%,
-      100% 0%,
-      100% 85%,
-      0% 100%
-    );
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
   }
 `;
 
@@ -897,15 +1021,13 @@ const RightImage2 = styled.div`
     100% 100%,
     0% 100%
   );
-  
+
   @media (max-width: 768px) {
-    height: 250px;
-    clip-path: polygon(
-      0% 5%,
-      100% 0%,
-      100% 100%,
-      0% 100%
-    );
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
   }
 `;
 
@@ -918,8 +1040,6 @@ const CollageImg = styled.img`
 `;
 
 export default function AboutTedx({ show = true }) {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -931,13 +1051,13 @@ export default function AboutTedx({ show = true }) {
         <TopSection>
           <LeftPanel>
             <StackedImage>
-              <ImageWithOverlay src={p1} alt="Street scene" />
+              <ImageWithOverlay src={p1} alt="Image Title 1" />
               <ImageTextOverlay2>
                 <span className="about-part">WHY NOT LEARN </span>
               </ImageTextOverlay2>
             </StackedImage>
             <StackedImage2>
-              <ImageWithOverlay src={p2} alt="Crowd scene" />
+              <ImageWithOverlay src={p2} alt="Image Title 2" />
               <ImageTextOverlay>
                 <span className="about-part">ABOUT</span>
                 <span className="tedx-part">TEDX</span>
@@ -945,7 +1065,7 @@ export default function AboutTedx({ show = true }) {
             </StackedImage2>
           </LeftPanel>
           <RightPanel>
-            <EventPhoto src={p3} alt="TEDx Event" />
+            <EventPhoto src={p3} alt="Image Title 3" />
           </RightPanel>
         </TopSection>
 
@@ -1014,28 +1134,46 @@ export default function AboutTedx({ show = true }) {
           <AboutTedContent>
             <p>
               <span className="text-red font-bold">TED</span> is on a mission to discover and spread ideas
-              that spark imagination, embrace possibility and catalyze impact. Our organization is devoted to
+              that spark imagination, embrace possibility and catalyze impact. 
+            </p>
+            <p> 
+              Our organization is devoted to
               curiosity, reason, wonder and the pursuit of knowledge — without an agenda. We welcome people from
               every discipline and culture who seek a deeper understanding of the world and connection with others,
               and we invite everyone to engage with ideas and activate them in your community.
+            </p>
+            <p>
               <span className="text-red font-bold"> TED</span> began in 1984 as a conference where Technology,
               Entertainment and Design converged, but today it spans a multitude of worldwide communities and
               initiatives exploring everything from science and business to education, arts and global issues.
+            </p>
+            <p>
               In addition to the hundreds of <span className="text-red font-bold">TED</span> Talks curated from
               our annual conferences and published on <span className="text-red font-bold">TED</span>.com, we
               produce original podcasts, short video series, animated educational lessons (<span className="text-red font-bold">TED</span>-Ed) and TV
               programs that are translated into more than 100 languages and distributed via partnerships around the world.
               Each year, more than 3,000 independently run <span className="text-red font-bold">TEDx</span> events
-              bring people together to share ideas and bridge divides in communities on every continent. Through
-              the Audacious Project, <span className="text-red font-bold">TED</span> has helped catalyze more
+              bring people together to share ideas and bridge divides in communities on every continent. 
+            </p>
+            <p>
+              Through the Audacious Project, <span className="text-red font-bold">TED</span> has helped catalyze more
               than $3 billion in funding for projects that seek to make the world more beautiful, sustainable and
               just. In 2020, <span className="text-red font-bold">TED</span> launched Countdown, an initiative to
-              accelerate solutions to the climate crisis and mobilize a movement for a net-zero future. View a full
-              list of <span className="text-red font-bold">TED</span> many programs and initiatives.
-              <span className="text-red font-bold">TED</span> is owned by a nonprofit, nonpartisan foundation.
-              Our aim is to help create a future worth pursuing for all.
-              Follow <span className="text-red font-bold">TED</span> on Twitter, Facebook, Instagram, TikTok and on LinkedIn.
+              accelerate solutions to the climate crisis and mobilize a movement for a net-zero future.
             </p>
+            <p>
+            <span className="text-red font-bold">TED</span> is owned by a nonprofit, nonpartisan foundation. <br/> Our aim is to help create a future worth pursuing for all.
+            </p>
+            <div className="w-full flex justify-center pb-4 sm:pb-6 md:pb-8 lg:pb-10">
+                <a
+                  href="https://www.ted.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-black border-4 border-white text-white px-5 py-2.5 sm:px-7 sm:py-3.5 md:px-10 md:py-5 lg:px-10 lg:py-5 text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl font-bold hover:bg-white hover:text-black transition-colors duration-300"
+                >
+                  READ MORE
+                </a>
+            </div>
           </AboutTedContent>
         </AboutTedSection>
 
@@ -1065,14 +1203,14 @@ export default function AboutTedx({ show = true }) {
           </SocialPanel>
           <ImageCollage>
             <LeftCollage>
-              <CollageImg src={p6} alt="Coastline" />
+              <CollageImg src={p6} alt="Image Footer 1" />
             </LeftCollage>
             <RightCollage>
               <RightImage1>
-                <CollageImg src={p7} alt="Coins" />
+                <CollageImg src={p7} alt="Image Footer 2" />
               </RightImage1>
               <RightImage2>
-                <CollageImg src={p8} alt="City skyline" />
+                <CollageImg src={p8} alt="Image Footer 3" />
               </RightImage2>
             </RightCollage>
           </ImageCollage>
