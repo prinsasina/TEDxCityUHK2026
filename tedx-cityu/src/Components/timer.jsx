@@ -6,24 +6,24 @@ function FlipDigit({ value, label }) {
   
   return (
     <div className="flex flex-col items-center">
-      <div className="flex gap-2">
+      <div className="flex gap-1.5 sm:gap-2">
         {valueString.split("").map((digit, idx) => (
           <div
             key={idx}
-            className="relative w-16 h-20 sm:w-20 sm:h-28 md:w-28 md:h-36 bg-red rounded-lg flex items-center justify-center overflow-hidden p-1"
+            className="relative w-12 h-16 sm:w-16 sm:h-20 md:w-20 md:h-28 lg:w-28 lg:h-36 bg-red rounded-lg flex items-center justify-center overflow-hidden p-1"
             style={{
               boxShadow: "0 4px 0 0 rgba(180, 30, 30, 1), inset 0 -2px 4px rgba(0,0,0,0.3)",
             }}
           >
             <div className="absolute inset-x-0 top-1/2 h-[2px] bg-black/30 z-10" />
-            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-none" style={{ fontFamily: "Bungee, sans-serif" }}>
+            <span className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-none" style={{ fontFamily: "Bungee, sans-serif" }}>
               {digit}
             </span>
           </div>
         ))}
       </div>
       {label && (
-        <span className={`mt-4 text-base sm:text-lg md:text-xl font-bold tracking-[0.2em] ${labelColor} uppercase`} style={{ fontFamily: "Bungee, sans-serif" }}>
+        <span className={`mt-3 sm:mt-4 text-xs sm:text-base md:text-lg font-bold tracking-[0.15em] sm:tracking-[0.2em] ${labelColor} uppercase`} style={{ fontFamily: "Bungee, sans-serif" }}>
           {label}
         </span>
       )}
@@ -93,17 +93,17 @@ export default function Timer({ targetDate }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-8 md:py-12">
-      <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8">
+    <div className="w-full flex flex-col items-center justify-center px-3 sm:px-4 py-6 sm:py-8 md:py-12">
+      <div className="w-full flex flex-wrap md:flex-nowrap items-center justify-center gap-3 sm:gap-4 md:gap-8">
         <FlipDigit value={formatNumber(timeLeft.days)} label="Days" />
-        <div className="flex flex-col gap-6 pb-12">
-          <div className="w-5 h-4 sm:w-6 sm:h-5 md:w-7 md:h-6 rounded-lg bg-red" />
-          <div className="w-5 h-4 sm:w-6 sm:h-5 md:w-7 md:h-6 rounded-lg bg-red" />
+        <div className="hidden sm:flex flex-col gap-5 md:gap-6 pb-8 md:pb-12">
+          <div className="w-4 h-3 sm:w-5 sm:h-4 md:w-7 md:h-6 rounded-lg bg-red" />
+          <div className="w-4 h-3 sm:w-5 sm:h-4 md:w-7 md:h-6 rounded-lg bg-red" />
         </div>
         <FlipDigit value={formatNumber(timeLeft.hours)} label="Hours" />
-        <div className="flex flex-col gap-6 pb-12">
-          <div className="w-5 h-4 sm:w-6 sm:h-5 md:w-7 md:h-6 rounded-lg bg-red" />
-          <div className="w-5 h-4 sm:w-6 sm:h-5 md:w-7 md:h-6 rounded-lg bg-red" />
+        <div className="hidden sm:flex flex-col gap-5 md:gap-6 pb-8 md:pb-12">
+          <div className="w-4 h-3 sm:w-5 sm:h-4 md:w-7 md:h-6 rounded-lg bg-red" />
+          <div className="w-4 h-3 sm:w-5 sm:h-4 md:w-7 md:h-6 rounded-lg bg-red" />
         </div>
         <FlipDigit value={formatNumber(timeLeft.minutes)} label="Minutes" />
       </div>
