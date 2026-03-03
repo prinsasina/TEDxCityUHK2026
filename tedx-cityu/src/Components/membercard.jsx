@@ -62,6 +62,7 @@ const MemberCard = ({ img, fname, lname, major, position }) => {
       <TextContent>
         <TopSection>
           <Name>
+            {/* to show the first name */}
             {fname}
             <br />
             {lname}
