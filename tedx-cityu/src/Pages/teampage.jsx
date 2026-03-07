@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import '@splidejs/splide/dist/css/splide.min.css';
-//import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Banner } from "../Components/banner";
 import { MemberCard } from "../Components/membercard";
-import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 
 import technicalData from '../Data/technicalData.json';
 import curatorData from '../Data/curatorData.json';
@@ -14,190 +11,450 @@ import financeSponsorshipData from '../Data/financeSponsorshipData.json';
 import humanResourcesData from '../Data/humanResourcesData.json';
 import speakerRelationsData from '../Data/speakerRelationsData.json';
 import marketingCommunicationData from '../Data/marketingCommunicationData.json';
+import pp1 from "../Assets/TeamCrew/pp1.JPG"
+import pp2 from "../Assets/TeamCrew/pp2.JPG"
+import pp3 from "../Assets/TeamCrew/pp3.JPG"
 
-const breakpoints = {
-    tablet: 1024,
-    mobile: 768,
+const breakpoints = { tablet: 1024, mobile: 768 };
+
+const deptStyleConfig = {
+    "Curators": { primaryColor: "#A31D1D", cardRadius: "15px" }, 
+    "Creative": { primaryColor: "#2E9F45", cardRadius: "50px 0px 50px 0px" }, 
+    "Technical": { primaryColor: "#1D45A3", cardRadius: "60px 60px 15px 15px" }, 
+    "Marketing and Communication": { primaryColor: "#E69F2E", cardRadius: "0px" }, 
+    "Human Resources": { primaryColor: "#D61DE6", cardRadius: "20px 20px 0 0" }, 
+    "Finance and Sponsorship": { primaryColor: "#1DE6D6", cardRadius: "0 40px 0 40px" }, 
+    "Event Management and Procurement": { primaryColor: "#581A9B", cardRadius: "40px" }, 
+    "Speaker Relations": { primaryColor: "#E6D61D", cardRadius: "15px 50px 15px 50px" }, 
 };
 
-const Container = styled.div``;
+const defaultStyle = { primaryColor: "#333", cardRadius: "15px" };
+
+/* =========================================================
+   STYLED COMPONENTS
+   ========================================================= */
+const Container = styled.div`
+  background-color: #f4f4f4;
+  background-image: radial-gradient(${props => props.dotColor} 1.5px, transparent 1.5px);
+  background-size: 15px 15px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const HeaderBanner = styled.div`
+  background-color: ${props => props.bgColor}; 
+  border-top: 8px solid black;
+  border-bottom: 8px solid black;
+  padding: 30px 50px;
+  display: flex;
+  align-items: center;
+  transform: skewY(-2deg);
+  margin-top: -10px;
+  margin-bottom: 40px;
+  box-shadow: 0px 15px 0px rgba(0,0,0,0.1);
+  transition: background-color 0.4s ease;
+`;
+
+const DepartmentTitle = styled.div`
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  border: 4px solid white;
+  padding: 10px 30px;
+  display: inline-block;
+  transform: skewY(2deg);
+  box-shadow: 6px 6px 0px black;
+  background-color: ${props => props.bgColor}; 
+  transition: background-color 0.4s ease;
+`;
 
 const ContentWrapper = styled.div`
   display: flex;
-  padding: 65px;
-
+  padding: 0 65px;
+  flex-grow: 1;
   @media (max-width: ${breakpoints.tablet}px) {
     padding: 20px;
     flex-direction: column;
   }
-
-  @media (max-width: ${breakpoints.mobile}px) {
-    padding: 10px;
-  }
 `;
 
 const DepartmentWrapper = styled.div`
-  width: 200px;
-  margin-right: 20px;
-
+  width: 250px;
+  margin-right: 40px;
+  background-color: black;
+  padding: 30px 20px;
+  border: 4px solid black;
+  flex-shrink: 0;
+  
   @media (max-width: ${breakpoints.tablet}px) {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    width: 35%;
+    width: 60%;
     height: 100%;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
     transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(-100%)')};
     transition: transform 0.3s ease-out;
-  }
-
-  @media (max-width: ${breakpoints.mobile}px) {
-    width: 45%;
-  }
-`;
-
-const DepartmentTitle = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-
-  @media (max-width: ${breakpoints.tablet}px) {
-    display: none;
   }
 `;
 
 const DepartmentList = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media (max-width: ${breakpoints.tablet}px) {
-    padding-top: 50px;
-  }
+  gap: 15px;
 `;
-
-const DepartmentMemberWrapper = styled.div``;
 
 const Department = styled.label`
-    transition: all 200ms ease-out;
-    &:hover {
-        transition-timing-function: ease-in;
-        border-bottom: 2px solid;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+    background-color: #222;
+    border: 3px solid transparent;
+    transition: all 0.2s ease-out;
+    &:hover { background-color: #444; cursor: pointer; transform: translateX(5px); }
+    input:checked + & {
+        background-color: white;
         color: black;
-        cursor: pointer;
+        border: 3px solid black;
+        box-shadow: 5px 5px 0px ${props => props.accentColor};
     }
-    &:checked {
-        color: black;
-    }
-
-  @media (max-width: ${breakpoints.tablet}px) {
-    font-size: 1rem;
-  }
 `;
 
-const DepartmentRadio = styled.input.attrs({
-    type: "radio",
-})``;
-
-const CarouselWrapper = styled.div`
-  width: 100%;
-
-  @media (max-width: ${breakpoints.tablet}px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-
-  @media (max-width: ${breakpoints.mobile}px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-  }
+const DepartmentRadio = styled.input.attrs({ type: "radio" })`
+  display: none;
 `;
 
-const StyledMemberCard = styled(MemberCard)`
-  height: 500px;
+const SmartGalleryContainer = styled.div`
+  flex-grow: 1;
+  background-color: ${props => props.dotColor}; 
+  transform: skewY(-2deg);
+  border: 6px solid black;
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+  padding: 60px 40px; 
+  
+  display: flex;
+  align-items: flex-start; 
+  gap: 20px; 
+  
+  /* Use flex-start so EVERY department aligns uniformly to the left edge */
+  justify-content: flex-start; 
+  overflow-x: auto;
+  min-height: 600px;
+  scroll-behavior: smooth; 
+
+  & > * {
+    /* 1. Untilt the cards */
+    transform: skewY(2deg);
+    /* 2. STOP Flexbox from eating the space of large departments! */
+    flex-shrink: 0 !important; 
+  }
+
+  &::-webkit-scrollbar { height: 12px; }
+  &::-webkit-scrollbar-track { background: transparent; border-top: 4px solid black; }
+  &::-webkit-scrollbar-thumb { background: black; border-radius: 0; }
 `;
 
 const HamburgerButton = styled.button`
   display: none;
   cursor: pointer;
-
+  background: #A31D1D;
+  border: 3px solid black;
+  padding: 5px;
   @media (max-width: ${breakpoints.tablet}px) {
     display: ${({ isMenuOpen }) => (isMenuOpen ? 'none' : 'block')};
     position: absolute;
     left: 20px;
-    top: 17px;
+    top: 20px;
+    z-index: 1001;
   }
-`;
-
-const DepartmentButton = styled.button`
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    z-index: 25;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black;
-    background: none;
-    border: none;
-    cursor: pointer;
 `;
 
 const HamburgerIcon = styled.div`
-  cursor: pointer;
   width: 25px;
-  height: 2.5px;
-  background-color: black;
-  margin: 5px 0;
-  transition: 0.4s;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
 `;
 
-const CurrentDepartment = styled.div`
-  font-size: 1.65rem;
-  font-weight: bold;
-  margin: 10px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-grow: 1;
-
-  @media (max-width: ${breakpoints.tablet}px) {
-    font-size: 1.45rem;
-  }
-
-  @media (max-width: ${breakpoints.mobile}px) {
-    font-size: 1.3rem;
-  }
-`;
-
-const MenuHeader = styled.div`
+const FooterBanner = styled.div`
+    background-color: black;
+    border-top: 8px solid ${props => props.accentColor || '#A31D1D'};
+    padding: 60px 50px;
+    margin-top: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    padding: 5px;
-    background-color: white;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    background-image: radial-gradient(${props => props.dotColor} 1px, transparent 1px);
+    background-size: 15px 15px;
 `;
 
+const FooterText = styled.div`
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+    transform: skewY(-4deg);
+    text-shadow: 2px 2px 0px black, -1px -1px 0px black, 1px -1px 0px black, -1px 1px 0px black;
+    position: relative;
+    z-index: 2;
+    &:before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: calc(100% + 20px);
+        background-color: ${props => props.accentColor || '#A31D1D'};
+        transform: skewX(-15deg);
+        z-index: -1;
+        border: 4px solid black;
+        box-shadow: 8px 8px 0px black;
+    }
+`;
+
+// Top Section - Two Column Layout
+const TopSection = styled.div`
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  height: 600px;
+
+  @media (max-width: 1024px) {
+    height: 450px;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    height: 350px;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    height: 250px;
+    gap: 0.25rem;
+  }
+`;
+
+// Left Panel - Two Stacked Images with Purple Border
+const LeftPanel = styled.div`
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+
+  @media (max-width: 1024px) {
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.25rem;
+  }
+`;
+
+const StackedImage = styled.div`
+  position: relative;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  background: #000;
+  border: 4px solid black;
+
+  @media (max-width: 768px) {
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
+  }
+`;
+
+const StackedImage2 = styled.div`
+  position: relative;
+  width: 100%;
+  height: 50%;
+  border: 4px solid black;
+  
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 90%,
+    0% 100%
+  );
+
+  overflow: hidden;
+  background: #000;
+
+  @media (max-width: 768px) {
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
+  }
+`;
+
+const ImageWithOverlay = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(80%) contrast(1.2);
+`;
+
+const ImageTextOverlay = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: 'Archivo Black', sans-serif;
+  z-index: 2;
+
+  text-shadow: 
+    -4px -4px 0 #000,
+    4px -4px 0 #000,
+    -4px 4px 0 #000,
+    4px 4px 0 #000,
+    0 0 0 transparent;
+  letter-spacing: 3px;
+  text-align: center;
+  white-space: nowrap;
+  
+  .about-part {
+    display: block;
+    font-size: 4rem; 
+  }
+  
+  .tedx-part {
+    display: block;
+    color: #EB0028;
+    font-size: 4rem; 
+    margin-top: -0.5rem; 
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    
+    .about-part, .tedx-part {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    
+    .about-part, .tedx-part {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    
+    .about-part, .tedx-part {
+      font-size: 1rem;
+    }
+  }
+`;
+
+const ImageTextOverlay2 = styled.div`
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: 'Bungee', sans-serif;
+  z-index: 2;
+
+  text-shadow: 
+    -3px -3px 0 #000,
+    3px -3px 0 #000,
+    -3px 3px 0 #000,
+    3px 3px 0 #000,
+    0 0 0 transparent;
+  letter-spacing: 3px;
+  text-align: center;
+  white-space: nowrap;
+
+  @media (max-width: 1024px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+  }
+`;
+
+// Right Panel - Event Photo
+const RightPanel = styled.div`
+  flex: 0 0 60%;
+  position: relative;
+  overflow: hidden;
+  border: 4px solid black;
+  height: 95%;
+
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 92%,
+    0% 100%
+  );
+
+  @media (max-width: 768px) {
+    border-width: 2px;
+  }
+
+  @media (max-width: 480px) {
+    border-width: 1px;
+  }
+`;
+
+const EventPhoto = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(80%) contrast(1.2);
+  overflow: hidden;
+`;
+
+/* =========================================================
+   MAIN COMPONENT LOGIC
+   ========================================================= */
 export default function TeamPage() {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [Dept, setDept] = useState('Curators');
     const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoints.tablet);
+    
+    const [Dept, setDept] = useState('Curators');
+    const [activeCardIndex, setActiveCardIndex] = useState(0); 
+    const activeCardRef = useRef(null);
     const departmentWrapperRef = useRef(null);
-
+    
     const list_of_department = {
         "Curators": curatorData,
         "Creative": creativeData,
@@ -209,160 +466,131 @@ export default function TeamPage() {
         "Technical": technicalData
     };
 
-    const handleChange = (department) => {
-        setDept(department);
-        if (isMobile) {
-            setMenuOpen(false);
-        }
-        console.log(department);
-    }
-
-    const handleResize = () => {
-        setIsMobile(window.innerWidth <= breakpoints.tablet);
-    }
-
     useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= breakpoints.tablet);
         window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const RenderDepartment = (Dept) => {
-        let data = (list_of_department[Dept] || []).filter(item => !item._example);
-        if (data.length === 0) return null;
-        if (isMobile) {
-            return (
-                <>
-                    {data.map((item, index) => (
-                        <div key={index} className="p-4 mx-auto">
-                            <MemberCard
-                                img={require("../Assets/Members/" + item.img)}
-                                fname={item.fname}
-                                lname={item.lname}
-                                major={item.major}
-                                position={item.position}
-                                cardWidth="350px"
-                                cardHeight="550px"
-                            />
-                        </div>
-                    ))}
-                </>
-            );
-        } else {
-            const showArrows = data.length > 3;
-            const perPage = data.length < 3 ? data.length : 3;
-            const cardWidth = 320;
-            const gapSize = 35;
-            const splideWidth = (cardWidth * perPage) + (gapSize * (perPage - 1));
-
-            return (
-                <Splide
-                    hasTrack={false}
-                    options={{
-                        perPage: perPage,
-                        rewind: true,
-                        width: splideWidth,
-                        height: "500px",
-                        gap: gapSize,
-                        arrows: showArrows,
-                        pagination: false,
-                        drag: data.length > perPage ? true : false,
-                    }}
-                    className="splide justify-center items-center"
-                >
-                    <SplideTrack>
-                        {data.map((item, index) => (
-                            <SplideSlide key={index}>
-                                <StyledMemberCard
-                                    img={require("../Assets/Members/" + item.img)}
-                                    fname={item.fname}
-                                    lname={item.lname}
-                                    major={item.major}
-                                    position={item.position}
-                                />
-                            </SplideSlide>
-                        ))}
-                    </SplideTrack>
-                </Splide>
-            );
-        }
-    };
-
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
+    const handleChange = (department) => {
+        setDept(department);
+        setActiveCardIndex(0); 
+        if (isMobile) setMenuOpen(false); 
+    }
 
     useEffect(() => {
-        function handleClickOutside(event) {
-            if (departmentWrapperRef.current && !departmentWrapperRef.current.contains(event.target)) {
-                setMenuOpen(false);
-            }
+        if (activeCardRef.current) {
+            activeCardRef.current.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center',  
+                block: 'nearest'
+            });
         }
+    }, [activeCardIndex, Dept]); 
 
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [departmentWrapperRef]);
+    const currentStyle = deptStyleConfig[Dept] || defaultStyle;
+
+    const RenderDepartment = (Dept, activeStyle) => {
+        let data = (list_of_department[Dept] || []).filter(item => !item._example);
+        if (data.length === 0) return null;
+
+        return (
+            <SmartGalleryContainer dotColor={activeStyle.primaryColor}>
+                {data.map((item, index) => {
+                    // Removed the "small team" logic entirely! Every department behaves the exact same way now.
+                    const isActive = activeCardIndex === index;
+
+                    return (
+                        <MemberCard
+                            key={index}
+                            ref={isActive ? activeCardRef : null} 
+                            img={require("../Assets/Members/" + item.img)}
+                            fname={item.fname}
+                            lname={item.lname}
+                            major={item.major}
+                            position={item.position}
+                            deptColor={activeStyle.primaryColor}
+                            cardRadius={activeStyle.cardRadius}
+                            isExpanded={isActive}
+                            onClick={() => setActiveCardIndex(index)}
+                        />
+                    );
+                })}
+            </SmartGalleryContainer>
+        );
+    };
 
     return (
-        <Container>
-            <Banner text1={"OUR"} text2={<span style={{color:"black"}}>CREW</span>}/>
-            {isMobile ? (
-                <>
-                    <MenuHeader>
-                        <HamburgerButton isMenuOpen={menuOpen} onClick={toggleMenu}>
-                            <HamburgerIcon />
-                            <HamburgerIcon />
-                            <HamburgerIcon />
-                        </HamburgerButton>
-                        <CurrentDepartment>{Dept}</CurrentDepartment>
-                        <div></div>
-                    </MenuHeader>
-                    <ContentWrapper>
-                        <DepartmentWrapper isOpen={menuOpen} ref={departmentWrapperRef}>
-                            <DepartmentButton onClick={toggleMenu}>
-                                Department
-                            </DepartmentButton>
-                            <DepartmentList className="pt-10" style={{ paddingTop: '50px' }}>
-                                {Object.keys(list_of_department).map((department, index) => (
-                                    <DepartmentMemberWrapper key={index} className="my-2.5">
-                                        <DepartmentRadio id={department} name='department' className='hidden peer' value={department} onChange={() => handleChange(department)} defaultChecked={department === "Curators"} />
-                                        <Department htmlFor={department} className='w-full py-1 text-xl text-base text-gray border-b border-gray inline-flex peer-checked:text-black peer-checked:border-black peer-checked:border-b-2'>
-                                            {department}
-                                        </Department>
-                                    </DepartmentMemberWrapper>
-                                ))}
-                            </DepartmentList>
-                        </DepartmentWrapper>
-                        <CarouselWrapper>
-                            {RenderDepartment(Dept)}
-                        </CarouselWrapper>
-                    </ContentWrapper>
-                </>
-            ) : (
-                <ContentWrapper className="flex items-center py-20 px-14">
-                    <DepartmentWrapper className="flex flex-col">
-                        <DepartmentTitle className="text-3xl font-bold font-textfont mb-8">
-                            Department
-                        </DepartmentTitle>
-                        <DepartmentList className="flex flex-col">
-                            {Object.keys(list_of_department).map((department, index) => (
-                                <DepartmentMemberWrapper key={index} className="my-2.5">
-                                    <DepartmentRadio id={department} name='department' className='hidden peer' value={department} onChange={() => handleChange(department)} defaultChecked={department === "Curators"} />
-                                    <Department htmlFor={department} className='w-full py-1 text-xl text-base text-gray border-b border-gray inline-flex peer-checked:text-black peer-checked:border-black peer-checked:border-b-2'>
-                                        {department}
-                                    </Department>
-                                </DepartmentMemberWrapper>
-                            ))}
-                        </DepartmentList>
-                    </DepartmentWrapper>
-                    <CarouselWrapper className="ml-10 mx-auto h-96 flex justify-center items-center">
-                        {RenderDepartment(Dept)}
-                    </CarouselWrapper>
-                </ContentWrapper>
+        <Container dotColor={currentStyle.primaryColor}>
+            
+            {/* <Banner 
+                text1={"WHY NOT LEARN"} 
+                text2={<span style={{
+                    color: currentStyle.primaryColor, 
+                    textShadow: "2px 2px 0px black",
+                    transition: "color 0.4s ease" 
+                }}>ABOUT OUR CREW</span>}
+            /> */}
+
+            <TopSection>
+                <LeftPanel>
+                    <StackedImage>
+                    <ImageWithOverlay src={pp1} alt="Image Title 1" />
+                    <ImageTextOverlay2>
+                        <span className="about-part">WHY NOT LEARN </span>
+                    </ImageTextOverlay2>
+                    </StackedImage>
+                    <StackedImage2>
+                    <ImageWithOverlay src={pp2} alt="Image Title 2" />
+                    <ImageTextOverlay>
+                        <span className="about-part">ABOUT</span>
+                        <span className="tedx-part">Our Crew</span>
+                    </ImageTextOverlay>
+                    </StackedImage2>
+                </LeftPanel>
+                <RightPanel>
+                    <EventPhoto src={pp3} alt="Image Title 3" />
+                </RightPanel>
+            </TopSection>
+            
+            <HeaderBanner bgColor={currentStyle.primaryColor}>
+                <DepartmentTitle bgColor={currentStyle.primaryColor}>
+                    Departments
+                </DepartmentTitle>
+            </HeaderBanner>
+
+            {isMobile && (
+                <HamburgerButton isMenuOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+                    <HamburgerIcon />
+                    <HamburgerIcon />
+                    <HamburgerIcon />
+                </HamburgerButton>
             )}
+
+            <ContentWrapper>
+                <DepartmentWrapper isOpen={menuOpen} ref={departmentWrapperRef}>
+                    <DepartmentList>
+                        {Object.keys(list_of_department).map((department, index) => (
+                            <div key={index}>
+                                <DepartmentRadio id={department} name='department' value={department} onChange={() => handleChange(department)} checked={Dept === department} />
+                                <Department htmlFor={department} accentColor={deptStyleConfig[department]?.primaryColor}>
+                                    {department}
+                                </Department>
+                            </div>
+                        ))}
+                    </DepartmentList>
+                </DepartmentWrapper>
+                
+                {RenderDepartment(Dept, currentStyle)}
+                
+            </ContentWrapper>
+
+            <FooterBanner accentColor={currentStyle.primaryColor} dotColor={currentStyle.primaryColor}>
+                {/* <FooterText accentColor={currentStyle.primaryColor}>
+                    Become the next curator? Join us!
+                </FooterText> */}
+            </FooterBanner>
+
         </Container>
     );
 }
