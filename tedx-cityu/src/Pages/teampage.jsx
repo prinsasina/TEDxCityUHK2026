@@ -143,7 +143,7 @@ const SmartGalleryContainer = styled.div`
   gap: 20px; 
   
   /* Use flex-start so EVERY department aligns uniformly to the left edge */
-  justify-content: flex-start; 
+  justify-content: safe center; 
   overflow-x: auto;
   min-height: 600px;
   scroll-behavior: smooth; 
