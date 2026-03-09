@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
 /* 1. THE MAIN WRAPPER: Handles the clicking and size changes */
@@ -88,11 +88,12 @@ const RoleBox = styled.div`
   text-shadow: 1px 1px 0px black;
 `;
 
-export const MemberCard = ({ img, fname, lname, major, position, deptColor, cardRadius, isExpanded, onClick }) => {
+const MemberCardInner = (
+  { img, fname, lname, major, position, deptColor, cardRadius, isExpanded, onClick },
+  ref
+) => {
   return (
-    // We pass isExpanded down to the styled components so they know how to behave
-    <CardWrapper isExpanded={isExpanded} onClick={onClick}>
-      
+    <CardWrapper ref={ref} isExpanded={isExpanded} onClick={onClick}>
       <ImageShape isExpanded={isExpanded} deptColor={deptColor} cardRadius={cardRadius}>
         <ProfileImg src={img} alt={`${fname} ${lname}`} />
       </ImageShape>
@@ -100,9 +101,11 @@ export const MemberCard = ({ img, fname, lname, major, position, deptColor, card
       <InfoContainer isExpanded={isExpanded}>
         <NameBox>{fname} {lname}</NameBox>
         <RoleBox deptColor={deptColor}>{position}</RoleBox>
-        <RoleBox style={{backgroundColor: 'white', color: 'black'}}>{major}</RoleBox>
+        <RoleBox style={{ backgroundColor: 'white', color: 'black' }}>{major}</RoleBox>
       </InfoContainer>
-
     </CardWrapper>
   );
 };
+
+export const MemberCard = forwardRef(MemberCardInner);
+MemberCard.displayName = 'MemberCard';

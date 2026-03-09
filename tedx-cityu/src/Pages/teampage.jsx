@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Banner } from "../Components/banner";
 import { MemberCard } from "../Components/membercard";
 
@@ -15,7 +15,7 @@ import pp1 from "../Assets/TeamCrew/pp1.JPG"
 import pp2 from "../Assets/TeamCrew/pp2.JPG"
 import pp3 from "../Assets/TeamCrew/pp3.JPG"
 
-const breakpoints = { tablet: 1024, mobile: 768 };
+const breakpoints = { tablet: 1024, mobile: 768, phone: 480 };
 
 const deptStyleConfig = {
     "Curators": { primaryColor: "#A31D1D", cardRadius: "15px" }, 
@@ -49,11 +49,24 @@ const HeaderBanner = styled.div`
   padding: 30px 50px;
   display: flex;
   align-items: center;
+  gap: 16px;
   transform: skewY(-2deg);
   margin-top: -10px;
   margin-bottom: 40px;
   box-shadow: 0px 15px 0px rgba(0,0,0,0.1);
   transition: background-color 0.4s ease;
+  @media (max-width: ${breakpoints.mobile}px) {
+    padding: 20px 24px;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: ${breakpoints.phone}px) {
+    padding: 14px 16px;
+    gap: 10px;
+    margin-bottom: 16px;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+  }
 `;
 
 const DepartmentTitle = styled.div`
@@ -68,6 +81,15 @@ const DepartmentTitle = styled.div`
   box-shadow: 6px 6px 0px black;
   background-color: ${props => props.bgColor}; 
   transition: background-color 0.4s ease;
+  @media (max-width: ${breakpoints.mobile}px) {
+    font-size: 1.5rem;
+    padding: 8px 20px;
+  }
+  @media (max-width: ${breakpoints.phone}px) {
+    font-size: 1rem;
+    padding: 6px 12px;
+    border-width: 3px;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -77,6 +99,9 @@ const ContentWrapper = styled.div`
   @media (max-width: ${breakpoints.tablet}px) {
     padding: 20px;
     flex-direction: column;
+  }
+  @media (max-width: ${breakpoints.phone}px) {
+    padding: 12px;
   }
 `;
 
@@ -97,6 +122,11 @@ const DepartmentWrapper = styled.div`
     height: 100%;
     transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(-100%)')};
     transition: transform 0.3s ease-out;
+  }
+  @media (max-width: ${breakpoints.phone}px) {
+    width: 80%;
+    padding: 20px 16px;
+    border-width: 3px;
   }
 `;
 
@@ -123,6 +153,10 @@ const Department = styled.label`
         color: black;
         border: 3px solid black;
         box-shadow: 5px 5px 0px ${props => props.accentColor};
+    }
+    @media (max-width: ${breakpoints.phone}px) {
+        padding: 8px 12px;
+        font-size: 0.9rem;
     }
 `;
 
@@ -158,6 +192,96 @@ const SmartGalleryContainer = styled.div`
   &::-webkit-scrollbar { height: 12px; }
   &::-webkit-scrollbar-track { background: transparent; border-top: 4px solid black; }
   &::-webkit-scrollbar-thumb { background: black; border-radius: 0; }
+  @media (max-width: ${breakpoints.mobile}px) {
+    padding: 30px 20px;
+    min-height: 400px;
+  }
+  @media (max-width: ${breakpoints.phone}px) {
+    padding: 20px 44px;
+    min-height: 350px;
+    border-width: 4px;
+    gap: 12px;
+  }
+`;
+
+const GalleryShell = styled.div`
+  position: relative;
+  flex-grow: 1;
+`;
+
+const SingleCardContainer = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 16px;
+`;
+
+const slideInFromRight = keyframes`
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const slideInFromLeft = keyframes`
+  from {
+    transform: translateX(-24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const AnimatedCard = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  animation: ${({ direction }) =>
+      direction === 1 ? slideInFromRight : slideInFromLeft}
+    250ms ease-out;
+`;
+
+const GalleryArrowButton = styled.button`
+  display: none;
+  @media (max-width: ${breakpoints.phone}px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+
+    width: 36px;
+    height: 36px;
+    border: 3px solid black;
+    box-shadow: 4px 4px 0px black;
+    background: white;
+    color: black;
+    cursor: pointer;
+    padding: 0;
+
+    left: ${({ side }) => (side === 'left' ? '8px' : 'auto')};
+    right: ${({ side }) => (side === 'right' ? '8px' : 'auto')};
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &:active {
+      transform: translateY(-50%) translateY(1px);
+      box-shadow: 2px 2px 0px black;
+    }
+  }
 `;
 
 const HamburgerButton = styled.button`
@@ -166,12 +290,16 @@ const HamburgerButton = styled.button`
   background: #A31D1D;
   border: 3px solid black;
   padding: 5px;
+  flex-shrink: 0;
   @media (max-width: ${breakpoints.tablet}px) {
-    display: ${({ isMenuOpen }) => (isMenuOpen ? 'none' : 'block')};
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    z-index: 1001;
+    display: ${({ isMenuOpen }) => (isMenuOpen ? 'none' : 'flex')};
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: ${breakpoints.phone}px) {
+    padding: 4px;
+    border-width: 2px;
   }
 `;
 
@@ -180,6 +308,25 @@ const HamburgerIcon = styled.div`
   height: 3px;
   background-color: white;
   margin: 4px 0;
+  @media (max-width: ${breakpoints.phone}px) {
+    width: 20px;
+    height: 2px;
+    margin: 3px 0;
+  }
+`;
+
+const BackdropOverlay = styled.div`
+  display: none;
+  @media (max-width: ${breakpoints.tablet}px) {
+    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
 `;
 
 const FooterBanner = styled.div`
@@ -449,6 +596,8 @@ const EventPhoto = styled.img`
 export default function TeamPage() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoints.tablet);
+    const [isPhone, setIsPhone] = useState(window.innerWidth <= breakpoints.phone);
+    const [slideDirection, setSlideDirection] = useState(1); // 1 = next/right, -1 = prev/left
     
     const [Dept, setDept] = useState('Curators');
     const [activeCardIndex, setActiveCardIndex] = useState(0); 
@@ -467,7 +616,10 @@ export default function TeamPage() {
     };
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= breakpoints.tablet);
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= breakpoints.tablet);
+            setIsPhone(window.innerWidth <= breakpoints.phone);
+        };
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -479,14 +631,27 @@ export default function TeamPage() {
     }
 
     useEffect(() => {
-        if (activeCardRef.current) {
-            activeCardRef.current.scrollIntoView({
-                behavior: 'smooth',
-                inline: 'center',  
-                block: 'nearest'
-            });
-        }
-    }, [activeCardIndex, Dept]); 
+        if (isPhone) return;
+
+        const cardEl = activeCardRef.current;
+        if (!cardEl) return;
+
+        const containerEl = cardEl.parentElement;
+        if (!containerEl) return;
+
+        const containerRect = containerEl.getBoundingClientRect();
+        const cardRect = cardEl.getBoundingClientRect();
+
+        const currentScrollLeft = containerEl.scrollLeft;
+        const offsetWithinContainer = cardRect.left - containerRect.left;
+        const centerOffset = (containerRect.width - cardRect.width) / 2;
+        const targetScrollLeft = currentScrollLeft + offsetWithinContainer - centerOffset;
+
+        containerEl.scrollTo({
+            left: targetScrollLeft,
+            behavior: 'smooth',
+        });
+    }, [activeCardIndex, Dept, isPhone]); 
 
     const currentStyle = deptStyleConfig[Dept] || defaultStyle;
 
@@ -494,29 +659,112 @@ export default function TeamPage() {
         let data = (list_of_department[Dept] || []).filter(item => !item._example);
         if (data.length === 0) return null;
 
-        return (
-            <SmartGalleryContainer dotColor={activeStyle.primaryColor}>
-                {data.map((item, index) => {
-                    // Removed the "small team" logic entirely! Every department behaves the exact same way now.
-                    const isActive = activeCardIndex === index;
+        const clampedIndex = Math.min(Math.max(activeCardIndex, 0), data.length - 1);
+        const isPrevDisabled = clampedIndex <= 0;
+        const isNextDisabled = clampedIndex >= data.length - 1;
 
-                    return (
-                        <MemberCard
-                            key={index}
-                            ref={isActive ? activeCardRef : null} 
-                            img={require("../Assets/Members/" + item.img)}
-                            fname={item.fname}
-                            lname={item.lname}
-                            major={item.major}
-                            position={item.position}
-                            deptColor={activeStyle.primaryColor}
-                            cardRadius={activeStyle.cardRadius}
-                            isExpanded={isActive}
-                            onClick={() => setActiveCardIndex(index)}
-                        />
-                    );
-                })}
-            </SmartGalleryContainer>
+        if (isPhone) {
+            const active = data[clampedIndex];
+            if (!active) return null;
+
+            return (
+                <GalleryShell>
+                    {data.length > 1 && (
+                        <>
+                            <GalleryArrowButton
+                                type="button"
+                                side="left"
+                                aria-label="Previous person"
+                                disabled={isPrevDisabled}
+                                onClick={() => {
+                                    setSlideDirection(-1);
+                                    setActiveCardIndex((i) => Math.max(0, i - 1));
+                                }}
+                            >
+                                ‹
+                            </GalleryArrowButton>
+                            <GalleryArrowButton
+                                type="button"
+                                side="right"
+                                aria-label="Next person"
+                                disabled={isNextDisabled}
+                                onClick={() => {
+                                    setSlideDirection(1);
+                                    setActiveCardIndex((i) => Math.min(data.length - 1, i + 1));
+                                }}
+                            >
+                                ›
+                            </GalleryArrowButton>
+                        </>
+                    )}
+                    <SingleCardContainer>
+                        <AnimatedCard
+                            key={`${Dept}-${clampedIndex}`}
+                            direction={slideDirection}
+                        >
+                            <MemberCard
+                                img={require("../Assets/Members/" + active.img)}
+                                fname={active.fname}
+                                lname={active.lname}
+                                major={active.major}
+                                position={active.position}
+                                deptColor={activeStyle.primaryColor}
+                                cardRadius={activeStyle.cardRadius}
+                                isExpanded={true}
+                            />
+                        </AnimatedCard>
+                    </SingleCardContainer>
+                </GalleryShell>
+            );
+        }
+
+        return (
+            <GalleryShell>
+                {data.length > 1 && (
+                    <>
+                        <GalleryArrowButton
+                            type="button"
+                            side="left"
+                            aria-label="Previous person"
+                            disabled={isPrevDisabled}
+                            onClick={() => setActiveCardIndex((i) => Math.max(0, i - 1))}
+                        >
+                            ‹
+                        </GalleryArrowButton>
+                        <GalleryArrowButton
+                            type="button"
+                            side="right"
+                            aria-label="Next person"
+                            disabled={isNextDisabled}
+                            onClick={() => setActiveCardIndex((i) => Math.min(data.length - 1, i + 1))}
+                        >
+                            ›
+                        </GalleryArrowButton>
+                    </>
+                )}
+                <SmartGalleryContainer dotColor={activeStyle.primaryColor}>
+                    {data.map((item, index) => {
+                        // Removed the "small team" logic entirely! Every department behaves the exact same way now.
+                        const isActive = activeCardIndex === index;
+
+                        return (
+                            <MemberCard
+                                key={index}
+                                ref={isActive ? activeCardRef : null} 
+                                img={require("../Assets/Members/" + item.img)}
+                                fname={item.fname}
+                                lname={item.lname}
+                                major={item.major}
+                                position={item.position}
+                                deptColor={activeStyle.primaryColor}
+                                cardRadius={activeStyle.cardRadius}
+                                isExpanded={isActive}
+                                onClick={() => setActiveCardIndex(index)}
+                            />
+                        );
+                    })}
+                </SmartGalleryContainer>
+            </GalleryShell>
         );
     };
 
@@ -554,18 +802,19 @@ export default function TeamPage() {
             </TopSection>
             
             <HeaderBanner bgColor={currentStyle.primaryColor}>
+                {isMobile && (
+                    <HamburgerButton isMenuOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+                        <HamburgerIcon />
+                        <HamburgerIcon />
+                        <HamburgerIcon />
+                    </HamburgerButton>
+                )}
                 <DepartmentTitle bgColor={currentStyle.primaryColor}>
-                    Departments
+                    {Dept}
                 </DepartmentTitle>
             </HeaderBanner>
 
-            {isMobile && (
-                <HamburgerButton isMenuOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
-                    <HamburgerIcon />
-                    <HamburgerIcon />
-                    <HamburgerIcon />
-                </HamburgerButton>
-            )}
+            {isMobile && <BackdropOverlay isOpen={menuOpen} onClick={() => setMenuOpen(false)} aria-hidden="true" />}
 
             <ContentWrapper>
                 <DepartmentWrapper isOpen={menuOpen} ref={departmentWrapperRef}>
