@@ -166,34 +166,33 @@ const DepartmentRadio = styled.input.attrs({ type: "radio" })`
 
 const SmartGalleryContainer = styled.div`
   flex-grow: 1;
-  background-color: ${props => props.dotColor}; 
+  background-color: ${props => props.dotColor};
   transform: skewY(-2deg);
   border: 6px solid black;
   box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
-  padding: 60px 40px; 
-  
+  padding: 60px 60px;
+
   display: flex;
-  align-items: flex-start; 
-  gap: 20px; 
-  
-  /* Use flex-start so EVERY department aligns uniformly to the left edge */
-  justify-content: safe center; 
-  overflow-x: auto;
+  align-items: flex-start;
+  gap: 20px;
+  justify-content: ${props => props.scrollable ? 'safe center' : 'center'};
+  overflow-x: ${props => props.scrollable ? 'auto' : 'hidden'};
   min-height: 600px;
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
 
   & > * {
-    /* 1. Untilt the cards */
     transform: skewY(2deg);
-    /* 2. STOP Flexbox from eating the space of large departments! */
-    flex-shrink: 0 !important; 
+    flex-shrink: 0 !important;
   }
 
-  &::-webkit-scrollbar { height: 12px; }
-  &::-webkit-scrollbar-track { background: transparent; border-top: 4px solid black; }
-  &::-webkit-scrollbar-thumb { background: black; border-radius: 0; }
+  ${props => props.scrollable && `
+    &::-webkit-scrollbar { height: 12px; }
+    &::-webkit-scrollbar-track { background: transparent; border-top: 4px solid black; }
+    &::-webkit-scrollbar-thumb { background: black; border-radius: 0; }
+  `}
+
   @media (max-width: ${breakpoints.mobile}px) {
-    padding: 30px 20px;
+    padding: 30px 56px;
     min-height: 400px;
   }
   @media (max-width: ${breakpoints.phone}px) {
@@ -249,38 +248,43 @@ const AnimatedCard = styled.div`
 `;
 
 const GalleryArrowButton = styled.button`
-  display: none;
-  @media (max-width: ${breakpoints.phone}px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
 
+  width: 44px;
+  height: 44px;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0px black;
+  background: white;
+  color: black;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.8rem;
+  line-height: 1;
+
+  left: ${({ side }) => (side === 'left' ? '8px' : 'auto')};
+  right: ${({ side }) => (side === 'right' ? '8px' : 'auto')};
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:active {
+    transform: translateY(-50%) translateY(1px);
+    box-shadow: 2px 2px 0px black;
+  }
+
+  @media (max-width: ${breakpoints.phone}px) {
     width: 36px;
     height: 36px;
-    border: 3px solid black;
-    box-shadow: 4px 4px 0px black;
-    background: white;
-    color: black;
-    cursor: pointer;
-    padding: 0;
-
-    left: ${({ side }) => (side === 'left' ? '8px' : 'auto')};
-    right: ${({ side }) => (side === 'right' ? '8px' : 'auto')};
-
-    &:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    &:active {
-      transform: translateY(-50%) translateY(1px);
-      box-shadow: 2px 2px 0px black;
-    }
+    font-size: 1.5rem;
   }
 `;
 
@@ -597,13 +601,13 @@ export default function TeamPage() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoints.tablet);
     const [isPhone, setIsPhone] = useState(window.innerWidth <= breakpoints.phone);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [slideDirection, setSlideDirection] = useState(1); // 1 = next/right, -1 = prev/left
-    
+
     const [Dept, setDept] = useState('Curators');
-    const [activeCardIndex, setActiveCardIndex] = useState(0); 
-    const activeCardRef = useRef(null);
+    const [activeCardIndex, setActiveCardIndex] = useState(0);
     const departmentWrapperRef = useRef(null);
-    
+
     const list_of_department = {
         "Curators": curatorData,
         "Creative": creativeData,
@@ -619,6 +623,7 @@ export default function TeamPage() {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= breakpoints.tablet);
             setIsPhone(window.innerWidth <= breakpoints.phone);
+            setWindowWidth(window.innerWidth);
         };
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -629,29 +634,6 @@ export default function TeamPage() {
         setActiveCardIndex(0); 
         if (isMobile) setMenuOpen(false); 
     }
-
-    useEffect(() => {
-        if (isPhone) return;
-
-        const cardEl = activeCardRef.current;
-        if (!cardEl) return;
-
-        const containerEl = cardEl.parentElement;
-        if (!containerEl) return;
-
-        const containerRect = containerEl.getBoundingClientRect();
-        const cardRect = cardEl.getBoundingClientRect();
-
-        const currentScrollLeft = containerEl.scrollLeft;
-        const offsetWithinContainer = cardRect.left - containerRect.left;
-        const centerOffset = (containerRect.width - cardRect.width) / 2;
-        const targetScrollLeft = currentScrollLeft + offsetWithinContainer - centerOffset;
-
-        containerEl.scrollTo({
-            left: targetScrollLeft,
-            behavior: 'smooth',
-        });
-    }, [activeCardIndex, Dept, isPhone]); 
 
     const currentStyle = deptStyleConfig[Dept] || defaultStyle;
 
@@ -718,6 +700,46 @@ export default function TeamPage() {
             );
         }
 
+        // Dynamic layout: show all cards if they fit, otherwise windowed carousel with arrows.
+        // Layout constants match the actual CSS values:
+        //   sidebarFootprint: sidebar (250px) + its margin-right (40px), only on desktop
+        //   wrapperPadding:   ContentWrapper padding — 2×65px desktop, 2×20px mobile
+        //   galleryPadding:   SmartGalleryContainer padding — 60px each side
+        const sidebarFootprint = isMobile ? 0 : 290;
+        const wrapperPadding   = isMobile ? 40 : 130;
+        const galleryPadding   = 120;
+        const availableCardWidth = windowWidth - sidebarFootprint - wrapperPadding - galleryPadding;
+
+        // 1 expanded card (300px) + rest collapsed (120px ea.) + gaps (20px ea.)
+        const totalCardsWidth = data.length <= 1 ? 300 : 300 + (data.length - 1) * 140;
+        const needsCarousel = totalCardsWidth > availableCardWidth;
+
+        if (!needsCarousel) {
+            return (
+                <GalleryShell>
+                    <SmartGalleryContainer scrollable dotColor={activeStyle.primaryColor}>
+                        {data.map((item, index) => {
+                            const isActive = clampedIndex === index;
+                            return (
+                                <MemberCard
+                                    key={index}
+                                    img={require("../Assets/Members/" + item.img)}
+                                    fname={item.fname}
+                                    lname={item.lname}
+                                    major={item.major}
+                                    position={item.position}
+                                    deptColor={activeStyle.primaryColor}
+                                    cardRadius={activeStyle.cardRadius}
+                                    isExpanded={isActive}
+                                    onClick={() => setActiveCardIndex(index)}
+                                />
+                            );
+                        })}
+                    </SmartGalleryContainer>
+                </GalleryShell>
+            );
+        }
+
         return (
             <GalleryShell>
                 {data.length > 1 && (
@@ -727,7 +749,10 @@ export default function TeamPage() {
                             side="left"
                             aria-label="Previous person"
                             disabled={isPrevDisabled}
-                            onClick={() => setActiveCardIndex((i) => Math.max(0, i - 1))}
+                            onClick={() => {
+                                setSlideDirection(-1);
+                                setActiveCardIndex((i) => Math.max(0, i - 1));
+                            }}
                         >
                             ‹
                         </GalleryArrowButton>
@@ -736,33 +761,43 @@ export default function TeamPage() {
                             side="right"
                             aria-label="Next person"
                             disabled={isNextDisabled}
-                            onClick={() => setActiveCardIndex((i) => Math.min(data.length - 1, i + 1))}
+                            onClick={() => {
+                                setSlideDirection(1);
+                                setActiveCardIndex((i) => Math.min(data.length - 1, i + 1));
+                            }}
                         >
                             ›
                         </GalleryArrowButton>
                     </>
                 )}
                 <SmartGalleryContainer dotColor={activeStyle.primaryColor}>
-                    {data.map((item, index) => {
-                        // Removed the "small team" logic entirely! Every department behaves the exact same way now.
-                        const isActive = activeCardIndex === index;
-
-                        return (
-                            <MemberCard
-                                key={index}
-                                ref={isActive ? activeCardRef : null} 
-                                img={require("../Assets/Members/" + item.img)}
-                                fname={item.fname}
-                                lname={item.lname}
-                                major={item.major}
-                                position={item.position}
-                                deptColor={activeStyle.primaryColor}
-                                cardRadius={activeStyle.cardRadius}
-                                isExpanded={isActive}
-                                onClick={() => setActiveCardIndex(index)}
-                            />
+                    {(() => {
+                        const collapsedFit = Math.max(0, Math.floor((availableCardWidth - 300) / 140));
+                        const visibleCount = Math.min(Math.max(1 + collapsedFit, 1), 3);
+                        const safeVisible = Math.min(visibleCount, data.length);
+                        const windowStart = Math.max(
+                            0,
+                            Math.min(clampedIndex - Math.floor(safeVisible / 2), data.length - safeVisible)
                         );
-                    })}
+                        return data.slice(windowStart, windowStart + safeVisible).map((item, idx) => {
+                            const realIndex = windowStart + idx;
+                            const isActive = clampedIndex === realIndex;
+                            return (
+                                <MemberCard
+                                    key={realIndex}
+                                    img={require("../Assets/Members/" + item.img)}
+                                    fname={item.fname}
+                                    lname={item.lname}
+                                    major={item.major}
+                                    position={item.position}
+                                    deptColor={activeStyle.primaryColor}
+                                    cardRadius={activeStyle.cardRadius}
+                                    isExpanded={isActive}
+                                    onClick={() => setActiveCardIndex(realIndex)}
+                                />
+                            );
+                        });
+                    })()}
                 </SmartGalleryContainer>
             </GalleryShell>
         );
