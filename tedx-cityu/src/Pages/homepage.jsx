@@ -68,6 +68,7 @@ export default function HomePage() {
               </h2>
                 <Timer />
             </div>
+            <SponsorCard />
             <div className="w-full">
                 <img src={TEDxTeam} alt="TEDx CityU Team" className="w-full h-auto" />
             </div>

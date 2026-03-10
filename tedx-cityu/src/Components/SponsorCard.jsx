@@ -7,6 +7,7 @@ const Container = styled.div`
   background-color: black;
   display: flex;
   flex-direction: column;
+  padding: 4rem 1rem 5rem;
 `;
 
 const CardWrapper = styled.div`
@@ -16,7 +17,7 @@ const CardWrapper = styled.div`
   align-items: center;
   gap: 4rem;
   margin: auto;
-  padding: 2rem;
+  padding: 1.5rem 2rem 0;
 `;
 
 const Card = styled.div`
@@ -30,8 +31,8 @@ const Card = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 360px;
+  max-height: 280px;
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -42,8 +43,8 @@ const Image = styled.img`
   }
 
   @media (max-width: 768px) {
-    max-width: 150px;
-    max-height: 50%;
+    max-width: 220px;
+    max-height: 180px;
   }
 
 `;
@@ -52,15 +53,18 @@ export default function SponsorCard() {
     return (
       <section id="sponsor-section"> {}
         <Container>
-          {/* <div className="mt-5 font-bold text-red text-center font-textfont text-4xl py-4 md:text-7xl md:py-7">
-            Sponsors
-          </div> */}
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.1em] text-center text-white mb-8 md:mb-12 uppercase"
+            style={{ fontFamily: "Bungee, sans-serif" }}
+          >
+            Sponsor
+          </h2>
           <CardWrapper>
             {Sponsordata.filter(item => !item._example).map((item, index) => (
               <Link key={index} to={item.path} target="_blank" rel="noopener noreferrer">
                 <Card>
                   <Image 
-                    src={require("../Assets/Members/Sponsor/" + item.img)}
+                    src={require("../Assets/Sponsor/" + item.img)}
                     alt={item.name}
                     className="rounded-md"
                   />
