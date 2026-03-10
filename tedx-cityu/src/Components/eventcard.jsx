@@ -1,29 +1,108 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
-const Container = styled.div``;
-const ImageFlex = styled.div``;
-const TextFlex = styled.div``;
-const Image = styled.img``;
-const BoldText = styled.div``;
-const List = styled.ul``;
-const Text = styled.p``;
+const Container = styled.div`
+display:flex;
+gap:2rem;
+margin:4rem auto;
+max-width:1400px;
+border:4px solid black;
+clip-path: polygon(
+0% 0%,
+100% 0%,
+100% 95%,
+0% 100%
+);
+background:white;
 
-function EventCard({ img, title, desc, MappedSpeakers }) {
-  return (
-    <Container className="mx-5 md:mx-5 lg:mx-20 px-5 md:px-10 my-5 py-5 bg-slate-100 md:flex">
-      <ImageFlex className="flex justify-center items-center self-start h-64 w-64 md:h-96 md:w-96">
-        <Image src={img} alt={title} className="max-w-full max-h-full object-contain"/>
-      </ImageFlex>
-      <TextFlex className="mx-0 md:ml-10 font-sans w-full">
-        <Text className="my-3 md:my-5 justify-center text-orange-800 text-2xl md:text-4xl font-bold">{title}</Text>
-        <Text className="text-justify md:text-xl">{desc}</Text>
-        <BoldText className="my-3 font-bold text-2xl">Speakers:</BoldText>
-        <List className="md:text-xl">
-          {MappedSpeakers}
-        </List>
-      </TextFlex>
-    </Container>
-  );
+@media (max-width:900px){
+flex-direction:column;
+}
+`;
+
+const ImagePanel = styled.div`
+flex:40%;
+border-right:4px solid black;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#FFF;
+
+img{
+width:90%;
+height:90%;
+object-fit:contain;
+filter: grayscale(80%) contrast(1.2);
+}
+`;
+
+const ContentPanel = styled.div`
+flex:60%;
+padding:2rem;
+`;
+
+const Title = styled.h2`
+font-size:3rem;
+font-weight:900;
+text-transform:uppercase;
+font-family:'Archivo Black',sans-serif;
+`;
+
+const Desc = styled.p`
+margin-top:1rem;
+font-size:1.1rem;
+line-height:1.7;
+`;
+
+const SpeakerTitle = styled.h3`
+margin-top:2rem;
+font-size:1.8rem;
+font-weight:800;
+text-transform:uppercase;
+`;
+
+const SpeakerList = styled.ul`
+margin-top:1rem;
+list-style:none;
+padding:0;
+`;
+
+const SpeakerItem = styled.li`
+padding:0.4rem 0;
+font-size:1rem;
+border-bottom:1px solid #eee;
+`;
+
+function EventCard({img,title,desc,speakers}){
+
+return(
+<Container>
+
+<ImagePanel>
+<img src={img} alt={title}/>
+</ImagePanel>
+
+<ContentPanel>
+
+<Title>{title}</Title>
+
+<Desc>{desc}</Desc>
+
+<SpeakerTitle>Speakers</SpeakerTitle>
+
+<SpeakerList>
+{speakers.map((speaker,index)=>(
+<SpeakerItem key={index}>
+{speaker}
+</SpeakerItem>
+))}
+</SpeakerList>
+
+</ContentPanel>
+
+</Container>
+)
+
 }
 
 export default EventCard
