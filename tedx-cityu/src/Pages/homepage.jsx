@@ -70,7 +70,7 @@ export default function HomePage() {
             </div>
             <SponsorCard />
             <div className="w-full">
-                <img src={TEDxTeam} alt="TEDx CityU Team" className="w-full h-auto" />
+                <img src={TEDxTeam} alt="TEDx CityUHK Team" className="w-full h-auto" />
             </div>
             <div className="w-full flex justify-end pr-4 sm:pr-6 md:pr-8 lg:pr-10 pb-4 sm:pb-6 md:pb-8 lg:pb-10">
                 <button onClick={() => navigate('/about')} className="bg-black border-4 border-white text-white px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-6 lg:px-12 lg:py-6 text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-bold hover:bg-white hover:text-black transition-colors duration-300">

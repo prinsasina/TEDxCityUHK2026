@@ -467,7 +467,7 @@ export default function RegistrationPage() {
           </FormGroup>
 
           <FormGroup>
-            <Label>Are you currently a CityU Student? *</Label>
+            <Label>Are you currently a CityUHK Student? *</Label>
             <RadioGroup>
               <RadioLabel>
                 <input

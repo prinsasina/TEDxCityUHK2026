@@ -2,7 +2,7 @@
 
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 
-This repository contains the source code and assets for the website of the 2026 TEDxCityU event series. The site highlights the annual theme, showcases speakers and performers, and introduces the student teams that organize the event.
+This repository contains the source code and assets for the website of the 2026 TEDxCityUHK event series. The site highlights the annual theme, showcases speakers and performers, and introduces the student teams that organize the event.
 
 ## Project Structure
 
