@@ -3,5 +3,10 @@
         "img": "Locobike logo_with white-04.png",
         "name": "Locobike",
         "path": "https://loco.hk/en/bike"
+    },
+    {
+        "img": "Indomie_Logo.png",
+        "name": "Indomie",
+        "path": "https://www.indomie.hk/"
     }
 ]
