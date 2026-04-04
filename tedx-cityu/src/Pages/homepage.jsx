@@ -61,9 +61,13 @@ export default function HomePage() {
             </AnimatedText>
             <div className="bg-white h-[15px] w-full" />
             
-            <div className="flex justify-center px-4 py-8">
-  <img src={Event_details} alt="TEDx CityUHK Hero" Event_details="w-full max-w-4xl h-auto rounded-lg shadow-lg" />
-</div>
+            <div className="w-full bg-black flex justify-center">
+                <img
+                    src={Event_details}
+                    alt="TEDx CityUHK Hero"
+                    className="w-full h-auto max-w-none object-contain"
+                />
+            </div>
 
             {/* Countdown Section */}
             <div className="flex-1 items-center justify-center pt-[200px] pb-[200px]">
