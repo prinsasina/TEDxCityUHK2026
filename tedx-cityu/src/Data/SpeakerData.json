@@ -1,9 +1,38 @@
 [
-    {
-        "_example": "Remove this example object and add your speakers below",
-        "img": "filename.jpg",
-        "fname": "Speaker Name",
-        "path": "SpeakerPath",
-        "desc": "Speaker description and bio here."
-    }
+  {
+    "img": "Darren_Po.jpeg",
+    "fname": "Darren Po",
+    "path": "darren-po",
+    "desc": "In a fast-paced, high-pressure life as a lawyer in Hong Kong for nearly a decade, structure has been Darren’s anchor. Amidst the long hours and urgent deadlines, he finds that the core of his discipline is rooted in his other identity as a lifelong athlete.\nDarren believes that while focusing on mastering one’s craft is essential for success, it is equally important to pursue multidisciplinary growth to experience life fully and realize our potential.\nHis story reflects this philosophy: from undertaking the challenge of training to achieve his first dunk at age 34 (at the uncommon height of 5 foot 10), to winning medals in masters swimming competitions at age 35 after more than a decade away from the pool, to building a community of over 100k on social media sharing his journey—all while pursuing his career goals as a partner at his firm. Consistent discipline has been the thread connecting all his pursuits.\nIn his TEDx talk, Darren explores how defining your own path, embracing unique niches, and setting clear goals can lead to breakthroughs in both professional and personal life."
+  },
+  {
+    "img": "Elin_Fu.jpg",
+    "fname": "Elin Fu",
+    "path": "elin-fu",
+    "desc": "Born and raised in the small town of Hamar in Norway, Elin grew up navigating multiple cultures as the child of immigrant parents. Driven by curiosity and a desire to challenge herself, she moved to Hong Kong in 2017, stepping into the unknown and embracing whatever came next.\nShe studied at the Hong Kong University of Science and Technology, majoring in Marketing with a minor in Entrepreneurship, and began her career in the corporate world with stints at a fashion tech start-up, a marketing research firm, and a recruiting company. Despite the pressure of a conventional path, she realized she wanted to take bigger risks and create something entirely her own. Her love for food and culture, shaped by her upbringing, combined with Hong Kong’s vibrant culinary scene, led her to the F&B industry. She co-founded Common Abode, creating concepts like Venner, bringing flavors, traditions, and a taste of slow living from Norway to the city. In 2023, she was recognized on Forbes 30 Under 30 and launched her social media to inspire others to embrace curiosity, chase dreams, and live boldly with a “why not?” mindset guiding every step."
+  },
+  {
+    "img": "Emi_Wong.jpg",
+    "fname": "Emi Wong",
+    "path": "emi-wong",
+    "desc": "Emi Wong is a Hong Kong–raised creator who believes in breaking free from limits shaped by fear, expectation, survival, and comfort—and in building a life fueled by freedom, purpose, and truth. She began her career in the corporate world, following a conventional path, until she chose to step away and trust a deeper belief: that in this one life, we are meant for more, and we are allowed to dream bigger than we were taught.\nShe started sharing simple, accessible fitness videos online to remind people that they can become healthier, stronger, and more connected to themselves—no matter where they are starting from. What began as a personal leap of faith grew into a global platform with over 7 million YouTube subscribers, earning recognition such as YouTube’s Top Rising Local Creator and a Forbes 30 Under 30 Asia nomination.\nAs her journey unfolded, Emi’s life has been shaped by continual reinvention—moving beyond rigid timelines and traditional definitions of success, and returning again and again to the question of who we truly are, what we are here to create, and what a limitless life can look like when lived from the heart.\nToday, Emi uses her platform to remind people that it’s okay not to have everything figured out, and that carving your own path—especially when it looks different from what society expects—is not failure, but courage. Her work reflects a simple belief: when we refuse to settle for fear in this one life, we stay open to possibility and ask, why not? how far can you go, and how good can it get?"
+  },
+  {
+    "img": "Peta_Laverick.png",
+    "fname": "Peta Laverick",
+    "path": "peta-laverick",
+    "desc": "Pete Laverick is an entrepreneur, former professional rugby player, and content creator exploring what it means to build a life on your own terms. After beginning his career in professional sport, Pete moved into the corporate world, where he spent several years working in business before deciding to step away and bet on a more independent path.\nNow based in Hong Kong and travelling frequently, he documents the experiment of building freedom through discipline — applying lessons from elite sport to entrepreneurship, performance, and everyday life. Through his content and speaking, Pete shares honest reflections on ambition, uncertainty, and the trade-offs that come with pursuing your potential, encouraging others to think more intentionally about the paths they choose."
+  },
+  {
+    "img": "Saanvi_Shukla.jpg",
+    "fname": "Saanvi Shukla",
+    "path": "saanvi-shukla",
+    "desc": "We all have moments when we ask ourselves, “Why do it?”, “Why make things harder for yourself?” or “Why take the risk when you have so much at stake?” You could give everything you have and still lose it all. But what if you don’t?\n \nSaanvi, an international student from India studying Computer Science at HKUST, has earned multiple scholarships for her unique blend of passion and perseverance. From conducting research at the University of Cambridge to interning at Deloitte, she brings together innovation and purpose with a vision to make technology more human.\n \nHer journey reaches far beyond tech. At just 15, she represented India at the Edinburgh Fringe Festival, the world’s largest arts festival, where her team was nominated for Best Dance. Since then, she has crossed continents and disciplines, representing both India and Hong Kong at prestigious global events, including competitions at Harvard, while excelling in 21 hackathons hosted by IBM, UNODC, Sino Group, and Cyberport.\n \nBeyond awards, Saanvi’s work is rooted in empathy. She has dedicated over 1,500 hours to volunteering, teaching coding and mathematics, supporting the elderly, and mentoring students. With a growing community of over 20,000 followers on LinkedIn, she continues to inspire others to pursue their dreams with passion and purpose.\n \nIn her TEDx talk, “Why Do It,” Saanvi explores the difficult realities people often avoid discussing, the struggle behind ambition, and the courage it takes to keep going."
+  },
+  {
+    "img": "William_Lee.jpeg",
+    "fname": "William Lee",
+    "path": "william-lee",
+    "desc": "William Lee is a hybrid entrepreneur who has spent his life choosing the harder path when the easier one was available. He began his career at Maersk in global supply chain and technology, eventually leading digital businesses across more than 30 countries in Asia. At the height of corporate stability, he stepped away to build companies from the ground up, experiencing both successful exits and humbling failures that reshaped how he views risk and responsibility.\nToday, he is the Co-Founder of YAS, a technology driven insurance group rethinking protection for a data rich world. He is also a General Partner at N+ Venture Studio, supporting early stage founders as they turn ideas into real businesses. Beyond entrepreneurship, he serves on boards in Hong Kong, including Ronald McDonald House Charities and SOW Asia, contributing to sustainability and long term institutional growth.\nRaised in North America and rooted in Asia, William has spent his career bridging cultures and markets. He believes leadership is revealed not in titles, but in mindset and values, especially when outcomes are uncertain. To him, entrepreneurship is not about chasing dreams. It is about confronting a simple question at every turning point: how do I make this life count?"
+  }
 ]

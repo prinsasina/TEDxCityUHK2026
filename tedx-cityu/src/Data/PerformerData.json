@@ -1,8 +1,30 @@
 [
-    {
-        "_example": "Remove this example object and add your performers below",
-        "img": "filename.jpg",
-        "fname": "Performer Name",
-        "path": "PerformerPath"
-    }
+  {
+    "img": "Benhill.jpg",
+    "fname": "Benhill",
+    "path": "benhill",
+    "members": [
+      "Anice Darlene Tjandra",
+      "Carolus Dharma Harjuna",
+      "Cavaro Bycylio",
+      "Gloria Netanya Mak",
+      "Joan Allyssa Sihombing",
+      "Nicholas Brandon Yang",
+      "Nyoman Cempaka Bunga"
+    ]
+  },
+  {
+    "img": "CSSA_DANSO.jpeg",
+    "fname": "CSSA DANSO",
+    "path": "cssa-danso",
+    "members": [
+      "LIU Yiting",
+      "ZHU Ruohan",
+      "LIU Zhiyuan",
+      "LIN Han",
+      "XU Haihan",
+      "ZHENG Xiyu",
+      "ZHANG Yu"
+    ]
+  }
 ]

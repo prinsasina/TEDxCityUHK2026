@@ -9,6 +9,7 @@ import PerformerCard from "../Components/PerformerCard";
 import SponsorCard from "../Components/SponsorCard";
 import Timer from "../Components/timer";
 import TEDxTeam from "../Assets/TEDxTeam2025.png";
+import Event_details from "../Assets/Event_details.png";
 
 // const mobileBreakpoint = 768; // Adjust as needed for your design
 // const tabletBreakpoint = 1024; // Adjust as needed for your design
@@ -59,15 +60,45 @@ export default function HomePage() {
                 A <span className="font-bold text-red">TEDx</span><span className="font-bold">CITYUHK</span> Production
             </AnimatedText>
             <div className="bg-white h-[15px] w-full" />
+            
+            <div className="w-full bg-black flex justify-center">
+                <img
+                    src={Event_details}
+                    alt="TEDx CityUHK Hero"
+                    className="w-full h-auto max-w-none object-contain"
+                />
+            </div>
+
+            {/* Countdown Section */}
             <div className="flex-1 items-center justify-center pt-[200px] pb-[200px]">
-              <h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.1em] text-center text-white mb-8 md:mb-12 uppercase"
-                style={{ fontFamily: "Bungee, sans-serif" }}
-              >
-                Countdown
-              </h2>
+                <h2
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.1em] text-center text-white mb-8 md:mb-12 uppercase"
+                    style={{ fontFamily: "Bungee, sans-serif" }}
+                >
+                    Countdown
+                </h2>
                 <Timer />
             </div>
+
+            {/* === SPEAKERS SECTION (first) === */}
+            <div className="py-16 bg-black">
+                <h2 className="text-4xl md:text-6xl font-bold text-center text-white mb-12 uppercase" 
+                    style={{ fontFamily: "Bungee, sans-serif" }}>
+                    Speakers
+                </h2>
+                <SpeakerCard />
+            </div>
+
+            {/* === PERFORMERS SECTION (second) === */}
+            <div className="py-16 bg-black">
+                <h2 className="text-4xl md:text-6xl font-bold text-center text-white mb-12 uppercase" 
+                    style={{ fontFamily: "Bungee, sans-serif" }}>
+                    Performers
+                </h2>
+                <PerformerCard />
+            </div>
+
+            {/* Original SponsorCard and team image – keep as they were */}
             <SponsorCard />
             <div className="w-full">
                 <img src={TEDxTeam} alt="TEDx CityUHK Team" className="w-full h-auto" />
