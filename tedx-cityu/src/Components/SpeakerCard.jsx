@@ -27,6 +27,12 @@ const CardWrapper = styled.div`
 const Card = styled.div``;
 const Image = styled.img``;
 
+const SpeakerName = styled.div`
+  font-family: 'Archivo Black', sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+`;
+
 // Helper to fix cropping for specific images (adjust vertical position if needed)
 const getImageStyle = (filename) => {
   if (filename === "Emi Wong.jpg" || filename === "Peta Laverick.png") {
@@ -50,9 +56,9 @@ export default function SpeakerCard() {
                   style={getImageStyle(item.img)}
                 />
               </div>
-              <div className="text-center font-textfont font-bold text-md md:text-3xl mt-2 md:mt-5 md:mb-7 text-white">
+              <SpeakerName className="text-center text-md md:text-3xl mt-2 md:mt-5 md:mb-7 text-white">
                 {item.fname}
-              </div>
+              </SpeakerName>
             </Card>
           </Link>
         ))}

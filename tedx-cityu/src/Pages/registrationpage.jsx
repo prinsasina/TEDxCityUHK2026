@@ -296,6 +296,15 @@ const SuccessText = styled.p`
   font-weight: 600;
 `;
 
+const ClosedTitle = styled(SuccessTitle)`
+  color: #000000;
+`;
+
+const ClosedText = styled(SuccessText)`
+  max-width: 32rem;
+  line-height: 1.4;
+`;
+
 const getFriendlyErrorMessage = (rawError) => {
   const normalized = (rawError || '').toLowerCase();
 
@@ -318,7 +327,11 @@ const getFriendlyErrorMessage = (rawError) => {
   return 'Registration could not be completed right now. Please try again in a moment.';
 };
 
+const REGISTRATION_DEADLINE_HKT = new Date('2026-04-05T23:59:59+08:00');
+
 export default function RegistrationPage() {
+  const checkRegistrationClosed = () => new Date() >= REGISTRATION_DEADLINE_HKT;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -330,9 +343,26 @@ export default function RegistrationPage() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isRegistrationClosed, setIsRegistrationClosed] = useState(checkRegistrationClosed);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (checkRegistrationClosed()) {
+      setIsRegistrationClosed(true);
+      return undefined;
+    }
+
+    const msUntilClose = REGISTRATION_DEADLINE_HKT.getTime() - Date.now() + 1;
+    const closeTimer = setTimeout(() => {
+      setIsRegistrationClosed(true);
+      setLoading(false);
+      setMessage('Registration is now closed.');
+    }, msUntilClose);
+
+    return () => clearTimeout(closeTimer);
   }, []);
 
   const handleInputChange = (e) => {
@@ -361,6 +391,12 @@ export default function RegistrationPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (isRegistrationClosed) {
+      setMessage('Registration is closed.');
+      return;
+    }
+
     setLoading(true);
     setMessage('');
 
@@ -424,6 +460,11 @@ export default function RegistrationPage() {
           <SuccessScreen>
             <SuccessTitle>Registration Successful!</SuccessTitle>
             <SuccessText>See you on April 11, 2026.</SuccessText>
+          </SuccessScreen>
+        ) : isRegistrationClosed ? (
+          <SuccessScreen>
+            <ClosedTitle>Registration Closed</ClosedTitle>
+            <ClosedText>Registration closed on April 5, 11:59 PM HKT. Thank you for your interest in TEDxCityUHK 2026.</ClosedText>
           </SuccessScreen>
         ) : (
         <form onSubmit={handleSubmit}>

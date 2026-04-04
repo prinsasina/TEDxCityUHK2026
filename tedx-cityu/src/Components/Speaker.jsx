@@ -3,9 +3,18 @@ import { styled } from "styled-components";
 
 const Container = styled.div``;
 const Wrapper = styled.div``;
-const DescriptionWrapper = styled.div``;
-const TitleText = styled.div``;
-const Picture = styled.img``;
+const DescriptionWrapper = styled.div`
+  font-family: 'Commissioner', sans-serif;
+`;
+const TitleText = styled.h2`
+  font-family: 'Archivo Black', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+`;
+const Picture = styled.img`
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0 #EB0028;
+`;
 
 const Speaker = ({ data }) => {
   useEffect(() => {
@@ -32,7 +41,7 @@ const Speaker = ({ data }) => {
           </div>
           {/* Text column */}
           <div className="md:w-1/2 flex flex-col justify-center">
-            <TitleText className="font-bold text-3xl md:text-5xl mb-4 md:mb-6">
+            <TitleText className="text-3xl md:text-5xl mb-4 md:mb-6">
               {item.fname}
             </TitleText>
             <DescriptionWrapper className="text-justify text-base md:text-lg leading-relaxed">
