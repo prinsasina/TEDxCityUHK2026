@@ -327,7 +327,7 @@ const getFriendlyErrorMessage = (rawError) => {
   return 'Registration could not be completed right now. Please try again in a moment.';
 };
 
-const REGISTRATION_DEADLINE_HKT = new Date('2026-04-05T23:59:59+08:00');
+const REGISTRATION_DEADLINE_HKT = new Date('2026-04-10T23:59:59+08:00');
 
 export default function RegistrationPage() {
   const checkRegistrationClosed = () => new Date() >= REGISTRATION_DEADLINE_HKT;
@@ -464,7 +464,7 @@ export default function RegistrationPage() {
         ) : isRegistrationClosed ? (
           <SuccessScreen>
             <ClosedTitle>Registration Closed</ClosedTitle>
-            <ClosedText>Registration closed on April 5, 11:59 PM HKT. Thank you for your interest in TEDxCityUHK 2026.</ClosedText>
+            <ClosedText>Registration closed on April 10, 11:59 PM HKT. Thank you for your interest in TEDxCityUHK 2026.</ClosedText>
           </SuccessScreen>
         ) : (
         <form onSubmit={handleSubmit}>
@@ -520,7 +520,7 @@ export default function RegistrationPage() {
                 />
                 Yes
               </RadioLabel>
-              <RadioLabel>
+              {/* <RadioLabel>
                 <input
                   type="radio"
                   name="student"
@@ -529,7 +529,7 @@ export default function RegistrationPage() {
                   onChange={handleStudentChange}
                 />
                 No
-              </RadioLabel>
+              </RadioLabel> */}
             </RadioGroup>
           </FormGroup>
 
