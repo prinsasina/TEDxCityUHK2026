@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Banner } from "../Components/banner";
@@ -11,6 +11,7 @@ import Timer from "../Components/timer";
 import TEDxTeam from "../Assets/TEDxTeam2025.png";
 import Event_details from "../Assets/Event_details.png";
 import pamphlet from "../Assets/pamphlet.pdf";
+import pamphletPreview from "../Assets/pamphlet.png";
 
 // const mobileBreakpoint = 768; // Adjust as needed for your design
 // const tabletBreakpoint = 1024; // Adjust as needed for your design
@@ -93,29 +94,23 @@ const ToolbarDots = styled.div`
   span:nth-child(3) { background: #28c840; }
 `;
 
-const EmbedFrame = styled.iframe`
+const ScrollablePreview = styled.div`
   width: 100%;
   height: 620px;
-  border: none;
-  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: #fff;
+  scroll-behavior: smooth;
 
   @media (max-width: 640px) {
     height: 420px;
   }
-`;
 
-const FallbackBox = styled.div`
-  width: 100%;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  background: #1a1a1a;
-  color: #888;
-  font-size: 0.9rem;
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 `;
 
 const DownloadButton = styled.a`
@@ -155,9 +150,11 @@ const DownloadIcon = () => (
 );
 
 // ─── PamphletViewer (inline) ───
-function PamphletViewer({ pamphletUrl, downloadName = "TEDxCityUHK2026-pamphlet.pdf" }) {
-  const [loadError, setLoadError] = useState(false);
-
+function PamphletViewer({ 
+  pamphletUrl, 
+  previewUrl = pamphletPreview,
+  downloadName = "TEDxCityUHK2026-pamphlet.pdf" 
+}) {
   const handleDownload = (e) => {
     e.preventDefault();
     const link = document.createElement("a");
@@ -179,21 +176,13 @@ function PamphletViewer({ pamphletUrl, downloadName = "TEDxCityUHK2026-pamphlet.
           <span />
         </PamphletToolbar>
 
-        {loadError ? (
-          <FallbackBox>
-            <span>Preview unavailable</span>
-            <DownloadButton href={pamphletUrl} onClick={handleDownload}>
-              <DownloadIcon /> Download to view
-            </DownloadButton>
-          </FallbackBox>
-        ) : (
-          <EmbedFrame
-            src={`${pamphletUrl}#toolbar=0&navpanes=0&scrollbar=0`}
-            title="TEDxCityUHK2026 Event Pamphlet"
-            onError={() => setLoadError(true)}
-            allow="fullscreen"
+        {/* Scrollable frame with PNG image */}
+        <ScrollablePreview>
+          <img 
+            src={previewUrl} 
+            alt="TEDxCityUHK2026 Event Pamphlet Preview"
           />
-        )}
+        </ScrollablePreview>
       </PamphletCard>
 
       <DownloadButton href={pamphletUrl} onClick={handleDownload}>
@@ -244,7 +233,7 @@ export default function HomePage() {
             </div>
 
             {/* Countdown Section */}
-            <div className="flex-1 items-center justify-center pt-[200px] pb-[200px]">
+            {/* <div className="flex-1 items-center justify-center pt-[200px] pb-[200px]">
                 <h2
                     className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.1em] text-center text-white mb-8 md:mb-12 uppercase"
                     style={{ fontFamily: "Bungee, sans-serif" }}
@@ -252,7 +241,13 @@ export default function HomePage() {
                     Countdown
                 </h2>
                 <Timer />
-            </div>
+            </div> */}
+
+            {/* Pamphlet Section — placed before sponsors */}
+             <PamphletViewer
+                pamphletUrl={pamphlet}
+                downloadName="TEDxCityUHK2026-pamphlet.pdf"
+            />
 
             {/* === SPEAKERS SECTION (first) === */}
             <div className="py-16 bg-black">
@@ -271,12 +266,6 @@ export default function HomePage() {
                 </h2>
                 <PerformerCard />
             </div>
-
-            {/* Pamphlet Section — placed before sponsors */}
-             <PamphletViewer
-                pamphletUrl={pamphlet}
-                downloadName="TEDxCityUHK2026-pamphlet.pdf"
-            />
 
             {/* Original SponsorCard and team image – keep as they were */}
             <SponsorCard />
